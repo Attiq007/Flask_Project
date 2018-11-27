@@ -1,0 +1,19 @@
+#map {       
+
+    height: 400px;
+    width: 100%;
+    margin: auto;   
+}
+
+.legend{
+	
+	background: white;
+	line-height: 1.5em
+
+}
+
+.legend i{
+
+	width: 5em;
+	float: left
+}

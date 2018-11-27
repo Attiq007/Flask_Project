@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Leaflet Map</title>
+
+    <!--              ================ FavIcon ================              -->
+    <link rel="shortcut icon" type="image/png" href="static/images/marker-icon-blue.png">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+
+</head>
+
+<body>
+
+
+    <h1>Shop Markers on Open Street Map with Leaflet, Same color</h1>
+
+    <div id="map"></div>
+
+    <script>
+
+        var map = L.map( 'map', {
+            center: [31.54972, 74.34361],
+            zoom: 11
+        });
+
+        L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: ['a','b','c']
+        }).addTo( map );
+
+
+            var legend = L.control({position: 'topright'});
+            legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend');
+            div.innerHTML = '<select><option>1</option><option>2</option><option>3</option></select>';
+            div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+            return div;
+            };
+            legend.addTo(map);
+
+
+
+            var getData = $.get('/data');
+
+            getData.done(function(shopmap){
+
+                var shopmap = shopmap;
+
+                for(var x in shopmap){
+
+                    var shop = shopmap[x];
+                    var point = [shop.latitude,shop.longitude];
+                    var marker = L.marker(point).addTo(map);
+
+                    var shopName = shop.shop;
+                    var brand = shop.brand;
+                    var address = shop.address;
+
+                    var contentString = "Shop Name : " + shopName + "<br/>" + "Brand : " + brand + "<br/>" + "Address : " + address + "<br/>"
+
+                    marker.bindPopup(contentString);
+
+                }
+
+            });
+
+
+    </script>
+
+
+</body>
+</html>

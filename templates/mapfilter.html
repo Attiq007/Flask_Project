@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Leaflet Mv1</title>
+
+    <!--              ================ FavIcon ================              -->
+    <link rel="shortcut icon" type="image/png" href="static/images/marker-icon-blue.png">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+
+</head>
+
+<body>
+
+
+    <h1>Shop Markers on Open Street Map with Leaflet, and Filter to compair</h1>
+
+
+    <select name="dropdown">
+      <option value="" selected disabled hidden>--Select an option--</option>
+      <option value="bareeze">Bareeze Man/Bareeze</option>
+      <option value="rangJa">Rang Ja</option>
+      <option value="chinyere">Chinyere</option>
+      <option value="minnieMinors">Minnie Minors</option>
+      <option value="edenrobe">Edenrobe</option>
+      <option value="kayseria">Kayseria</option>
+      <option value="entertainer">The Entertainer</option>
+      <option value="royalTag">Royal Tag</option>
+      <option value="monark">Monark</option>
+      <option value="royalTagCompetitors">Royal Tag Competitors</option>
+    </select><br><br>
+
+
+    <div id="map"></div>
+
+    <script>
+
+        var map = L.map( 'map', {
+            center: [31.504022, 74.329976],
+            zoom: 11
+        });
+
+        L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: ['a','b','c']
+        }).addTo( map );
+
+         var name;
+
+         $('select[name="dropdown"]').change(function(){
+
+                if ($(this).val() == "bareeze"){
+                    name = "Bareeze";
+                    again(name);
+                }
+
+                if ($(this).val() == "rangJa"){
+                    name = "Rang Ja";
+                    again(name);
+                }
+
+                if ($(this).val() == "chinyere"){
+                    name = "Chinyere";
+                    again(name);
+                }
+
+                if ($(this).val() == "minnieMinors"){
+                    name = "Minnie Minors";
+                    again(name);
+                }
+
+                if ($(this).val() == "edenrobe"){
+                    name = "Edenrobe";
+                    again(name);
+                }
+
+                if ($(this).val() == "kayseria"){
+                    name = "Kayseria";
+                    again(name);
+                }
+
+                if ($(this).val() == "entertainer"){
+                    name = "The Entertainer";
+                    again(name);
+                }
+
+                if ($(this).val() == "royalTag"){
+                    name = "Royal Tag";
+                    again(name);
+                }
+
+                if ($(this).val() == "monark"){
+                    name = "Monark";
+                    again(name);
+                }
+
+                if ($(this).val() == "royalTagCompetitors"){
+                    name = "Royal Tag Competitors";
+                    again(name);
+                }
+
+            });
+
+        function again(name){
+
+            var getData = $.get('/data');
+
+            getData.done(function(shopmap){
+
+                var shopmap = shopmap;
+
+                for(var x in shopmap){
+
+                    var shop = shopmap[x];
+                    var point = [shop.latitude,shop.longitude];
+
+                    if((shop.brand == 'Royal Tag') && (name == 'Royal Tag')){
+
+                        var greenIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-green.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: greenIcon}).addTo(map);
+
+                        }else if(((shop.brand == 'Cambridge') && (name == 'Royal Tag Competitors')) || ((shop.brand == 'Charcoal') && (name == 'Royal Tag Competitors')) || ((shop.brand == 'Uniworth') && (name == 'Royal Tag Competitors'))){
+
+                        var redIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-red.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: redIcon}).addTo(map);
+
+                    }else if((shop.brand == 'Bareeze Man') && (name == 'Bareeze')){
+
+
+                        var blueIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-blue.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: blueIcon}).addTo(map);
+
+                    }else if((shop.brand == 'Bareeze') && (name == 'Bareeze')){
+
+
+                        var blueIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-blue.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: blueIcon}).addTo(map);
+
+                    }else if((shop.brand == 'Rang Ja') && (name == 'Rang Ja')){
+
+
+                        var orangeIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-orange.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: orangeIcon}).addTo(map);
+
+                    }else if((shop.brand == 'Chinyere') && (name == 'Chinyere')){
+
+
+                        var greyIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-grey.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: greyIcon}).addTo(map);
+
+                    }else if((shop.brand == 'Minnie Minors') && (name == 'Minnie Minors')){
+
+
+                        var violetIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-violet.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: violetIcon}).addTo(map);
+
+                    }else if((shop.brand == 'edenrobe') && (name == 'Edenrobe')){
+
+
+                        var brownIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-brown.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: brownIcon}).addTo(map);
+
+                    }else if((shop.brand == 'Kayseria') && (name == 'Kayseria')){
+
+
+                        var yellowIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-yellow.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: yellowIcon}).addTo(map);
+
+                    }else if((shop.brand == 'The Entertainer') && (name == 'The Entertainer')){
+
+
+                        var blackIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-black.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: blackIcon}).addTo(map);
+
+                    }else if((shop.brand == 'Monark') && (name == 'Monark')){
+
+
+                        var pinkIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-pink.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {icon: pinkIcon}).addTo(map);
+
+                    }
+                    else{
+
+                        var marker = L.marker(point);
+
+                    }
+
+
+                var shopName = shop.shop;
+                var brand = shop.brand;
+                var address = shop.address;
+
+                var contentString = "Shop Name : " + shopName + "<br/>" + "Brand : " + brand + "<br/>" + "Address : " + address + "<br/>"
+
+                marker.bindPopup(contentString);
+
+                }
+            });
+
+        }
+
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML +=  '<img src="static/images/marker-icon-green.png" width="16" height="25">'  + '     <b>Royal Tag Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-red.png" width="16" height="25">'   +  '     <b>Royal Tag Competitors Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-blue.png" width="16" height="25">' + '     <b>Bareeze Man/Bareeze Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-orange.png" width="16" height="25">' + '     <b>Rang Ja Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-grey.png" width="16" height="25">' + '     <b>Chinyere Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-violet.png" width="16" height="25">' + '     <b>Minnie Minors Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-brown.png" width="16" height="25">' + '     <b>Edenrobe Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-yellow.png" width="16" height="25">' + '     <b>Kayseria Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-black.png" width="16" height="25">' + '     <b>The Entertainer Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-pink.png" width="16" height="25">' + '     <b>Monark Outlets</b>' + '<br>'
+
+            return div;
+        };
+
+        legend.addTo(map);
+
+
+    </script>
+
+</body>
+
+</html>

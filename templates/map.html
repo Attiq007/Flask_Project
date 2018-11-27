@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Map</title>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
+
+
+</head>
+<body>
+
+<h1> Our Shop Markers on Google Map </h1>
+
+<!--<script type="text/css" src="{{ url_for('static', filename='style.css') }}"></script>-->
+
+<style>
+
+#map {
+
+    height: 400px;
+    width: 100%;
+    margin: auto;
+}
+
+</style>
+
+
+<div id="map"></div>
+
+<script>
+
+
+	    function initialize (){
+
+            var getData = $.get('/data');
+
+            getData.done(function(shopmap){
+
+                var shopmap = shopmap;
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: new google.maps.LatLng(31.54972, 74.34361),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    zoom:11
+                });
+
+                for(var x in shopmap){
+
+                    var shop = shopmap[x];
+                    var location = new google.maps.LatLng(shop.latitude,shop.longitude);
+                    addMarker(map, shop.shop , shop.brand, shop.address, location);
+                }
+            });
+        }
+
+
+
+   	function addMarker(map, shop, brand, address, location){
+
+			var marker = new google.maps.Marker({
+
+				position: location,
+				label: brand,
+				map: map
+			});
+
+			var contentString = "Shop Name : " + shop + "<br/>" + "Brand : " + brand + "<br/>" + "Address : " + address + "<br/>" + "LatLong : " + location
+
+			google.maps.event.addListener(marker, 'click', function(){
+
+				if(typeof infowindow != 'undefined') infowindow.close();
+				infowindow = new google.maps.InfoWindow({
+
+					content: contentString
+				});
+
+				infowindow.open(map,marker);
+			});
+
+ 		}
+
+
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHPvPnENktrY-S8mEQDY4ItTG1Ku2H3IQ&callback=initialize">
+</script>
+
+</body>
+</html>

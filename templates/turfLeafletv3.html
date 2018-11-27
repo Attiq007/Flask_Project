@@ -1,0 +1,4070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Turf lflv3</title>
+
+    <!--              ================ FavIcon ================              -->
+
+    <link rel="shortcut icon" type="image/png" href="static/images/green-circle.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--              ================ Custom Files ================              -->
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+
+
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+
+
+    <!--  ==================================   Turf files   ================================  -->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Turf.js/2.0.2/turf.min.js'></script>
+
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+
+    <!-- ============================  Circle v4 Custom files  ==========================
+
+    <link rel="stylesheet" href="static/css/leaflet-tag-filter-button.css" />
+    <link rel="stylesheet" href="static/css/easy-button.css" />
+    <link rel="stylesheet" href="static/css/leaflet_locationlist.css" />
+    <link rel="stylesheet" href="static/css/marker-extend.css" />
+
+    <script src="static/js/leaflet_locationlist.js"></script>
+    <script src="static/js/easy-button.js"></script>
+    <script src="static/js/leaflet-tag-filter-button.js"></script>
+    <script src="static/js/L.CircleEditor.js"></script>
+
+-->
+
+
+
+
+</head>
+<body>
+
+<h1>Using turf and Leaflet Version with Individual Layers Unchecked</h1>
+
+<div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([31.492263, 74.316796], 11);
+
+            // ========================  Adds OpenStreet Map in the map Div ==========================
+
+            var streets = L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: ['a','b','c']
+            }).addTo( map );
+
+
+
+//=======================================   Adding GeoJSON Data   ======================================================
+
+
+
+//========================================   Royal Tag   ======================================
+
+
+var royalTagFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 28,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.355759,
+                    31.471148
+                ]
+            },
+            "properties": {
+                "id": 28,
+                "shop": "Packages Mall",
+                "brand": "Royal Tag",
+                "address": "Packages Mall, Walton Road, Lahore",
+                "brand_id": 9,
+                "latitude": 31.471148,
+                "longitude": 74.355759
+            }
+        },
+        {
+            "id": 30,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.349639,
+                    31.522681
+                ]
+            },
+            "properties": {
+                "id": 30,
+                "shop": "MM Alam",
+                "brand": "Royal Tag",
+                "address": "MM Alam (Opp. Mobilink H.O Shop# 1 MM Alam Road Plot# 28 K Gulberg 2 Lahore)",
+                "brand_id": 9,
+                "latitude": 31.522681,
+                "longitude": 74.349639
+            }
+        },
+        {
+            "id": 31,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.353949,
+                    31.506971
+                ]
+            },
+            "properties": {
+                "id": 31,
+                "shop": "Kasuri Road",
+                "brand": "Royal Tag",
+                "address": "Main Mehmood Ali Kasoori Road Lahore",
+                "brand_id": 9,
+                "latitude": 31.506971,
+                "longitude": 74.353949
+            }
+        },
+        {
+            "id": 33,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.316635,
+                    31.468111
+                ]
+            },
+            "properties": {
+                "id": 33,
+                "shop": "Raja Sahib Link Road",
+                "brand": "Royal Tag",
+                "address": "Raja Sahib Model Town (Link Road Model Town Lahore)",
+                "brand_id": 9,
+                "latitude": 31.468111,
+                "longitude": 74.316635
+            }
+        },
+        {
+            "id": 34,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.364164,
+                    31.533006
+                ]
+            },
+            "properties": {
+                "id": 34,
+                "shop": "Cologne",
+                "brand": "Royal Tag",
+                "address": "Fortress Stadium Lahore",
+                "brand_id": 9,
+                "latitude": 31.533006,
+                "longitude": 74.364164
+            }
+        },
+        {
+            "id": 35,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.363053,
+                    31.532727
+                ]
+            },
+            "properties": {
+                "id": 35,
+                "shop": "Fortress Square",
+                "brand": "Royal Tag",
+                "address": "Fortress Square (Shop# GF-23 24 37 38 Fortress Square Mall Fortress Stadium Lahore)",
+                "brand_id": 9,
+                "latitude": 31.532727,
+                "longitude": 74.363053
+            }
+        },
+        {
+            "id": 36,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.280682,
+                    31.504739
+                ]
+            },
+            "properties": {
+                "id": 36,
+                "shop": "Karim Block",
+                "brand": "Royal Tag",
+                "address": "Karim Block (Shop #3 18-Karim Block Market Lahore)",
+                "brand_id": 9,
+                "latitude": 31.504739,
+                "longitude": 74.280682
+            }
+        },
+        {
+            "id": 37,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.354027,
+                    31.507576
+                ]
+            },
+            "properties": {
+                "id": 37,
+                "shop": "Xinhua Mall",
+                "brand": "Royal Tag",
+                "address": "Xinhua Mall (Ground Floor)",
+                "brand_id": 9,
+                "latitude": 31.507576,
+                "longitude": 74.354027
+            }
+        },
+        {
+            "id": 38,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265511,
+                    31.46692
+                ]
+            },
+            "properties": {
+                "id": 38,
+                "shop": "Emporium Mall",
+                "brand": "Royal Tag",
+                "address": "Emporium Mall Abdul Haque Rd Johar Town Lahore",
+                "brand_id": 9,
+                "latitude": 31.46692,
+                "longitude": 74.265511
+            }
+        },
+        {
+            "id": 43,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.347971,
+                    31.508005
+                ]
+            },
+            "properties": {
+                "id": 43,
+                "shop": "Raja Sahib Gulberg",
+                "brand": "Royal Tag",
+                "address": "Raja Sahib Liberty (Shahrae Noor Jahan Lahore)",
+                "brand_id": 9,
+                "latitude": 31.508005,
+                "longitude": 74.347971
+            }
+        },
+        {
+            "id": 91,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.157867,
+                    33.521252
+                ]
+            },
+            "properties": {
+                "id": 91,
+                "shop": "WTC Islamabad-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "GIGA Mall World Trade Center (Ground Floor, Giga Mall, DHA Phase 2, Islamabad)",
+                "brand_id": 9,
+                "latitude": 33.521252,
+                "longitude": 73.157867
+            }
+        },
+        {
+            "id": 92,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.055391,
+                    33.720348
+                ]
+            },
+            "properties": {
+                "id": 92,
+                "shop": "Safa Gold-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Safa Gold (Shop# S-30 & 31 1st Floor Safa Gold Mall Plot# 5 Sector F-7 Islamabad)",
+                "brand_id": 9,
+                "latitude": 33.720348,
+                "longitude": 73.055391
+            }
+        },
+        {
+            "id": 93,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.049712,
+                    33.708062
+                ]
+            },
+            "properties": {
+                "id": 93,
+                "shop": "Centaurus-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Centaurus Mall (Shop# 218-9, 2nd Floor, Centaurus Mall, Islamabad)",
+                "brand_id": 9,
+                "latitude": 33.708062,
+                "longitude": 73.049712
+            }
+        },
+        {
+            "id": 94,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.065699,
+                    24.880397
+                ]
+            },
+            "properties": {
+                "id": 94,
+                "shop": "Bahadurabad-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Royal Tag Bhadhrabad (Shop# 2 Groud Floor Almas Arcade Bahadurabad Karachi)",
+                "brand_id": 9,
+                "latitude": 24.880397,
+                "longitude": 67.065699
+            }
+        },
+        {
+            "id": 95,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.062858,
+                    24.876921
+                ]
+            },
+            "properties": {
+                "id": 95,
+                "shop": "Dolmen Mall-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Dolmen Mall (Shop# G70 Main Tariq Road Karachi)",
+                "brand_id": 9,
+                "latitude": 24.876921,
+                "longitude": 67.062858
+            }
+        },
+        {
+            "id": 96,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.086812,
+                    24.932708
+                ]
+            },
+            "properties": {
+                "id": 96,
+                "shop": "Lucky One Mall-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Lucky One Mall Karachi Opp to UBL ground complex FB Area Karachi",
+                "brand_id": 9,
+                "latitude": 24.932708,
+                "longitude": 67.086812
+            }
+        },
+        {
+            "id": 97,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.049982,
+                    33.597911
+                ]
+            },
+            "properties": {
+                "id": 97,
+                "shop": "Ghakhar Pindi-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Royal Tag Ghakhar Plaza (Shop# 4-B Lower Ground Floor Gakhars Bank Road Saddar Rawalpindi)",
+                "brand_id": 9,
+                "latitude": 33.597911,
+                "longitude": 73.049982
+            }
+        },
+        {
+            "id": 98,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    68.381029,
+                    25.364351
+                ]
+            },
+            "properties": {
+                "id": 98,
+                "shop": "Hyderabad-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Boulevard Mall A-14, 71000, Autobahn Road Hyderabad",
+                "brand_id": 9,
+                "latitude": 25.364351,
+                "longitude": 68.381029
+            }
+        },
+        {
+            "id": 99,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.102191,
+                    31.41037
+                ]
+            },
+            "properties": {
+                "id": 99,
+                "shop": "Daisy FSB-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Murad Rd, Block B, Peoples Colony 1, Block B People's Colony No 1, Faisalabad",
+                "brand_id": 9,
+                "latitude": 31.41037,
+                "longitude": 73.102191
+            }
+        },
+        {
+            "id": 100,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.189634,
+                    32.102565
+                ]
+            },
+            "properties": {
+                "id": 100,
+                "shop": "Kings Mall-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Kings Mall 1st Floor, near Wapda Town",
+                "brand_id": 9,
+                "latitude": 32.102565,
+                "longitude": 74.189634
+            }
+        },
+        {
+            "id": 101,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.202266,
+                    32.164065
+                ]
+            },
+            "properties": {
+                "id": 101,
+                "shop": "Aura Gujranwala-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Royal Tag Satellite Town",
+                "brand_id": 9,
+                "latitude": 32.164065,
+                "longitude": 74.202266
+            }
+        },
+        {
+            "id": 102,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.095195,
+                    30.657195
+                ]
+            },
+            "properties": {
+                "id": 102,
+                "shop": "Azaan Heights-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Azaan Heights (Shop#13-15 Ahmad Murad Road Civil Lines Sahiwal)",
+                "brand_id": 9,
+                "latitude": 30.657195,
+                "longitude": 73.095195
+            }
+        },
+        {
+            "id": 103,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.451575,
+                    30.193318
+                ]
+            },
+            "properties": {
+                "id": 103,
+                "shop": "United Mall-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "United Mall (The United Mall Plot# 74 Abdali Road Multan)",
+                "brand_id": 9,
+                "latitude": 30.193318,
+                "longitude": 71.451575
+            }
+        },
+        {
+            "id": 104,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    70.31496,
+                    28.428388
+                ]
+            },
+            "properties": {
+                "id": 104,
+                "shop": "Rahim Yar Khan-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Royal Tag Zamindaar Colony (A-1 Zamindara Colony Rahim Yar Khan)",
+                "brand_id": 9,
+                "latitude": 28.428388,
+                "longitude": 70.31496
+            }
+        },
+        {
+            "id": 105,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.574975,
+                    32.514016
+                ]
+            },
+            "properties": {
+                "id": 105,
+                "shop": "Aqua Sialkot-Royal Tag",
+                "brand": "Royal Tag",
+                "address": "Royal Tag Cantt (Sialkot Cantt)",
+                "brand_id": 9,
+                "latitude": 32.514016,
+                "longitude": 74.574975
+            }
+        },
+        {
+            "id": 175,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.108427,
+                    31.40504
+                ]
+            },
+            "properties": {
+                "id": 175,
+                "shop": "Galaxy Mall",
+                "brand": "Royal Tag",
+                "address": "Royal Tag Galaxy Mall (Harrian wala Chowk D Ground Faisalabad)",
+                "brand_id": 9,
+                "latitude": 31.40504,
+                "longitude": 73.108427
+            }
+        },
+        {
+            "id": 176,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.472446,
+                    30.218676
+                ]
+            },
+            "properties": {
+                "id": 176,
+                "shop": "Ace Mall",
+                "brand": "Royal Tag",
+                "address": "Ace Mall Multan",
+                "brand_id": 9,
+                "latitude": 30.218676,
+                "longitude": 71.472446
+            }
+        },
+        {
+            "id": 177,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.271581,
+                    31.445263
+                ]
+            },
+            "properties": {
+                "id": 177,
+                "shop": "Wapda Town",
+                "brand": "Royal Tag",
+                "address": "Raja Sahib Wapda Town (Near Wapda Town Round About)",
+                "brand_id": 9,
+                "latitude": 31.445263,
+                "longitude": 74.271581
+            }
+        }
+    ]
+}
+
+
+
+//==============================================   Cambridge   =================================
+
+
+
+
+var cambridgeFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 106,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.108268,
+                    31.404975
+                ]
+            },
+            "properties": {
+                "id": 106,
+                "shop": "Galaxy Plus",
+                "brand": "Cambridge",
+                "address": "Hariana wala chowk, Mall road, Faisalabad, Pakistan",
+                "brand_id": 11,
+                "latitude": 31.404975,
+                "longitude": 73.108268
+            }
+        },
+        {
+            "id": 107,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.189622,
+                    32.102393
+                ]
+            },
+            "properties": {
+                "id": 107,
+                "shop": "The Cambridge Shop",
+                "brand": "Cambridge",
+                "address": "Upper ground floor Kings Mall Opposite Wapda town, Gujranwala, Pakistan",
+                "brand_id": 11,
+                "latitude": 32.102393,
+                "longitude": 74.189622
+            }
+        },
+        {
+            "id": 108,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    68.363861,
+                    25.391135
+                ]
+            },
+            "properties": {
+                "id": 108,
+                "shop": "Modern Garments",
+                "brand": "Cambridge",
+                "address": "Dr. Ziauddin Road, Hyderabad, Pakistan",
+                "brand_id": 11,
+                "latitude": 25.391135,
+                "longitude": 68.363861
+            }
+        },
+        {
+            "id": 109,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.058909,
+                    33.710869
+                ]
+            },
+            "properties": {
+                "id": 109,
+                "shop": "Super Flagship Store",
+                "brand": "Cambridge",
+                "address": "Super Market, Islamabad, Pakistan",
+                "brand_id": 11,
+                "latitude": 33.710869,
+                "longitude": 73.058909
+            }
+        },
+        {
+            "id": 110,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.013753,
+                    33.695196
+                ]
+            },
+            "properties": {
+                "id": 110,
+                "shop": "Al Saeed",
+                "brand": "Cambridge",
+                "address": "Salma Plaza, F-10, Islamabad, Pakistan",
+                "brand_id": 11,
+                "latitude": 33.695196,
+                "longitude": 73.013753
+            }
+        },
+        {
+            "id": 111,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.07387,
+                    33.720216
+                ]
+            },
+            "properties": {
+                "id": 111,
+                "shop": "Beverly Centre",
+                "brand": "Cambridge",
+                "address": "Shop # 3/6, Block 56/G, Blue Area F-6, Islamabad, Pakistan",
+                "brand_id": 11,
+                "latitude": 33.720216,
+                "longitude": 73.07387
+            }
+        },
+        {
+            "id": 112,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.049954,
+                    33.707837
+                ]
+            },
+            "properties": {
+                "id": 112,
+                "shop": "Centaurus Mall",
+                "brand": "Cambridge",
+                "address": "Centaurus Mall, Blue Area, Islamabad, Pakistan",
+                "brand_id": 11,
+                "latitude": 33.707837,
+                "longitude": 73.049954
+            }
+        },
+        {
+            "id": 113,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.055519,
+                    33.720555
+                ]
+            },
+            "properties": {
+                "id": 113,
+                "shop": "Safa Gold Mall",
+                "brand": "Cambridge",
+                "address": "College Rd, Islamabad, Pakistan, Islamabad, Pakistan",
+                "brand_id": 11,
+                "latitude": 33.720555,
+                "longitude": 73.055519
+            }
+        },
+        {
+            "id": 121,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.030282,
+                    24.801921
+                ]
+            },
+            "properties": {
+                "id": 121,
+                "shop": "Dolmen City",
+                "brand": "Cambridge",
+                "address": "Dolmen City, Clifton, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.801921,
+                "longitude": 67.030282
+            }
+        },
+        {
+            "id": 44,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.315759,
+                    31.467034
+                ]
+            },
+            "properties": {
+                "id": 44,
+                "shop": "Amanah Mall",
+                "brand": "Cambridge",
+                "address": "207, Second Floor Amanah Mall Model Town Link Road",
+                "brand_id": 11,
+                "latitude": 31.467034,
+                "longitude": 74.315759
+            }
+        },
+        {
+            "id": 45,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.342047,
+                    31.509574
+                ]
+            },
+            "properties": {
+                "id": 45,
+                "shop": "HKB, Liberty",
+                "brand": "Cambridge",
+                "address": "Liberty Market",
+                "brand_id": 11,
+                "latitude": 31.509574,
+                "longitude": 74.342047
+            }
+        },
+        {
+            "id": 46,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.378161,
+                    31.473058
+                ]
+            },
+            "properties": {
+                "id": 46,
+                "shop": "HKB, Defence",
+                "brand": "Cambridge",
+                "address": "Defence, Lahore",
+                "brand_id": 11,
+                "latitude": 31.473058,
+                "longitude": 74.378161
+            }
+        },
+        {
+            "id": 47,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.350541,
+                    31.52748
+                ]
+            },
+            "properties": {
+                "id": 47,
+                "shop": "Fountain Avenue",
+                "brand": "Cambridge",
+                "address": "Main Gulberg",
+                "brand_id": 11,
+                "latitude": 31.52748,
+                "longitude": 74.350541
+            }
+        },
+        {
+            "id": 48,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.34358,
+                    31.510438
+                ]
+            },
+            "properties": {
+                "id": 48,
+                "shop": "Cambridge, ENEM",
+                "brand": "Cambridge",
+                "address": "Liberty Market",
+                "brand_id": 11,
+                "latitude": 31.510438,
+                "longitude": 74.34358
+            }
+        },
+        {
+            "id": 49,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.322215,
+                    31.560551
+                ]
+            },
+            "properties": {
+                "id": 49,
+                "shop": "Shopee II",
+                "brand": "Cambridge",
+                "address": "Mall Road",
+                "brand_id": 11,
+                "latitude": 31.560551,
+                "longitude": 74.322215
+            }
+        },
+        {
+            "id": 50,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.316623,
+                    31.468078
+                ]
+            },
+            "properties": {
+                "id": 50,
+                "shop": "Raja Sahab",
+                "brand": "Cambridge",
+                "address": "Link Road",
+                "brand_id": 11,
+                "latitude": 31.468078,
+                "longitude": 74.316623
+            }
+        },
+        {
+            "id": 51,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.347969,
+                    31.508002
+                ]
+            },
+            "properties": {
+                "id": 51,
+                "shop": "Raja Sahab (Liberty)",
+                "brand": "Cambridge",
+                "address": "94-C/II, Gulbery III Liberty",
+                "brand_id": 11,
+                "latitude": 31.508002,
+                "longitude": 74.347969
+            }
+        },
+        {
+            "id": 52,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.37823,
+                    31.474936
+                ]
+            },
+            "properties": {
+                "id": 52,
+                "shop": "Flagship Store Z-Block",
+                "brand": "Cambridge",
+                "address": "9-Z Block, Commercial Area, Phase-III, DHA",
+                "brand_id": 11,
+                "latitude": 31.474936,
+                "longitude": 74.37823
+            }
+        },
+        {
+            "id": 53,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.363099,
+                    31.532465
+                ]
+            },
+            "properties": {
+                "id": 53,
+                "shop": "Fortress Square Mall",
+                "brand": "Cambridge",
+                "address": "1st Floor",
+                "brand_id": 11,
+                "latitude": 31.532465,
+                "longitude": 74.363099
+            }
+        },
+        {
+            "id": 114,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.037797,
+                    24.827214
+                ]
+            },
+            "properties": {
+                "id": 114,
+                "shop": "The Forum",
+                "brand": "Cambridge",
+                "address": "Khayaban-e-Roomi, Block 6, Clifton, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.827214,
+                "longitude": 67.037797
+            }
+        },
+        {
+            "id": 115,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.027125,
+                    24.814179
+                ]
+            },
+            "properties": {
+                "id": 115,
+                "shop": "Park Towers",
+                "brand": "Cambridge",
+                "address": "Shahra-e-Firdausi, Block 5, Clifton, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.814179,
+                "longitude": 67.027125
+            }
+        },
+        {
+            "id": 116,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.040377,
+                    24.935445
+                ]
+            },
+            "properties": {
+                "id": 116,
+                "shop": "Dolmen Mall",
+                "brand": "Cambridge",
+                "address": "Dolmen Mall, Tariq road, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.935445,
+                "longitude": 67.040377
+            }
+        },
+        {
+            "id": 117,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.040293,
+                    24.935546
+                ]
+            },
+            "properties": {
+                "id": 117,
+                "shop": "Dolmen Mall Hyderi",
+                "brand": "Cambridge",
+                "address": "Dolmen Mall Hyderi, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.935546,
+                "longitude": 67.040293
+            }
+        },
+        {
+            "id": 118,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.07593,
+                    24.903232
+                ]
+            },
+            "properties": {
+                "id": 118,
+                "shop": "The Cambridge Shop",
+                "brand": "Cambridge",
+                "address": "Shop No 2, Trade Centre Opposite . Expo Centre, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.903232,
+                "longitude": 67.07593
+            }
+        },
+        {
+            "id": 119,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.065531,
+                    24.879793
+                ]
+            },
+            "properties": {
+                "id": 119,
+                "shop": "The Cambirdge Shop - Bahadurabad",
+                "brand": "Cambridge",
+                "address": "Dolmen arcade, shop no 3, Plot No 1/3, Bahadurabad, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.879793,
+                "longitude": 67.065531
+            }
+        },
+        {
+            "id": 120,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.030012,
+                    24.856075
+                ]
+            },
+            "properties": {
+                "id": 120,
+                "shop": "Atrium Mall",
+                "brand": "Cambridge",
+                "address": "Zaib-un-Nisa Street, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.856075,
+                "longitude": 67.030012
+            }
+        },
+        {
+            "id": 122,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.04626,
+                    24.940464
+                ]
+            },
+            "properties": {
+                "id": 122,
+                "shop": "Block-H, North Nazimabad",
+                "brand": "Cambridge",
+                "address": "Plot No # D-11/1, Block-H Main Khayaban-e-Shershah Suri North Nazimabad Karachi Pakistan",
+                "brand_id": 11,
+                "latitude": 24.940464,
+                "longitude": 67.04626
+            }
+        },
+        {
+            "id": 123,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.030287,
+                    24.801922
+                ]
+            },
+            "properties": {
+                "id": 123,
+                "shop": "Dolmen City (Zeen)",
+                "brand": "Cambridge",
+                "address": "Shop No # S3 & S4, The Harbour Front, HC-3, Dolmen Mall City, Scheme-5, Block # 04, Clifton Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.801922,
+                "longitude": 67.030287
+            }
+        },
+        {
+            "id": 124,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.087298,
+                    24.932279
+                ]
+            },
+            "properties": {
+                "id": 124,
+                "shop": "Lucky One - Cambridge",
+                "brand": "Cambridge",
+                "address": "Shop No. G-25 LA-2/B, Block-21, F.B.Area Rashid Minhas Road, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.932279,
+                "longitude": 67.087298
+            }
+        },
+        {
+            "id": 125,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.086713,
+                    24.932459
+                ]
+            },
+            "properties": {
+                "id": 125,
+                "shop": "Lucky One - Zeen",
+                "brand": "Cambridge",
+                "address": "Shop No. F-28 LA-2/B, Block-21, F.B.Area Rashid Minhas Road, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.932459,
+                "longitude": 67.086713
+            }
+        },
+        {
+            "id": 126,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.030289,
+                    24.856033
+                ]
+            },
+            "properties": {
+                "id": 126,
+                "shop": "Dolmen Mall (T) - Zeen",
+                "brand": "Cambridge",
+                "address": "Shop No # TF-20 and 21 3rd. Floor Plot No. 13, Block - 3 Dolmen Mall Tariq Road Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.856033,
+                "longitude": 67.030289
+            }
+        },
+        {
+            "id": 127,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.030227,
+                    24.856036
+                ]
+            },
+            "properties": {
+                "id": 127,
+                "shop": "Atrium Mall (Zeen)",
+                "brand": "Cambridge",
+                "address": "Shop No # 20 & 21, 2nd Floor, Atrium Mall, 249- Zaibun-Nisa Street, Saddar, Karachi, Pakistan",
+                "brand_id": 11,
+                "latitude": 24.856036,
+                "longitude": 67.030227
+            }
+        },
+        {
+            "id": 128,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.451918,
+                    30.193689
+                ]
+            },
+            "properties": {
+                "id": 128,
+                "shop": "Chen One",
+                "brand": "Cambridge",
+                "address": "Abdali road, Multan, Pakistan",
+                "brand_id": 11,
+                "latitude": 30.193689,
+                "longitude": 71.451918
+            }
+        },
+        {
+            "id": 129,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.055189,
+                    33.594028
+                ]
+            },
+            "properties": {
+                "id": 129,
+                "shop": "Hassan Enterprises",
+                "brand": "Cambridge",
+                "address": "S. Attaullah Plaza, Bank road, Saddar, Rawalpindi, Pakistan",
+                "brand_id": 11,
+                "latitude": 33.594028,
+                "longitude": 73.055189
+            }
+        },
+        {
+            "id": 130,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.04985,
+                    33.598049
+                ]
+            },
+            "properties": {
+                "id": 130,
+                "shop": "Classic",
+                "brand": "Cambridge",
+                "address": "Gakhar Plaza, Rawalpindi, Rawalpindi, Pakistan",
+                "brand_id": 11,
+                "latitude": 33.598049,
+                "longitude": 73.04985
+            }
+        },
+        {
+            "id": 131,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.574909,
+                    32.513348
+                ]
+            },
+            "properties": {
+                "id": 131,
+                "shop": "V-Mall",
+                "brand": "Cambridge",
+                "address": "Sialkot cantt, Sialkot, Pakistan",
+                "brand_id": 11,
+                "latitude": 32.513348,
+                "longitude": 74.574909
+            }
+        }
+    ]
+}
+
+
+//===================================================   Charcoal   ===============================================
+
+
+
+var charcoalFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 54,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.347988,
+                    31.508059
+                ]
+            },
+            "properties": {
+                "id": 54,
+                "shop": "Raja Sahab",
+                "brand": "Charcoal",
+                "address": "94-C/II, Gulberg III, Near Hussain Chowk, Lahore",
+                "brand_id": 12,
+                "latitude": 31.508059,
+                "longitude": 74.347988
+            }
+        },
+        {
+            "id": 55,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.315728,
+                    31.46689
+                ]
+            },
+            "properties": {
+                "id": 55,
+                "shop": "Amanah Mall",
+                "brand": "Charcoal",
+                "address": "2nd Floor Model Town Link Rd, Lahore",
+                "brand_id": 12,
+                "latitude": 31.46689,
+                "longitude": 74.315728
+            }
+        },
+        {
+            "id": 56,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.380852,
+                    31.563098
+                ]
+            },
+            "properties": {
+                "id": 56,
+                "shop": "Shalimar Link Road",
+                "brand": "Charcoal",
+                "address": "9/B Shalimar Link Road",
+                "brand_id": 12,
+                "latitude": 31.563098,
+                "longitude": 74.380852
+            }
+        },
+        {
+            "id": 57,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.355327,
+                    31.470679
+                ]
+            },
+            "properties": {
+                "id": 57,
+                "shop": "Packages Mall",
+                "brand": "Charcoal",
+                "address": "Shop# 2030 - Level 2 - Packages Mall, Walton Road, Lahore",
+                "brand_id": 12,
+                "latitude": 31.470679,
+                "longitude": 74.355327
+            }
+        },
+        {
+            "id": 58,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.356935,
+                    31.414608
+                ]
+            },
+            "properties": {
+                "id": 58,
+                "shop": "Attari",
+                "brand": "Charcoal",
+                "address": "18 Km Ferozpur Road Attari Durbar Stop, Near Pak Arab Society Lahore",
+                "brand_id": 12,
+                "latitude": 31.414608,
+                "longitude": 74.356935
+            }
+        },
+        {
+            "id": 59,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.363216,
+                    31.532362
+                ]
+            },
+            "properties": {
+                "id": 59,
+                "shop": "Fortress Square",
+                "brand": "Charcoal",
+                "address": "Shop# FF-1, Fortress Square Plaza, Fortress Stadium, Lahore",
+                "brand_id": 12,
+                "latitude": 31.532362,
+                "longitude": 74.363216
+            }
+        },
+        {
+            "id": 60,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265574,
+                    31.46695
+                ]
+            },
+            "properties": {
+                "id": 60,
+                "shop": "Emporium Mall",
+                "brand": "Charcoal",
+                "address": "Outlet No F-31, Emporium Mall Johar Town Lahore",
+                "brand_id": 12,
+                "latitude": 31.46695,
+                "longitude": 74.265574
+            }
+        },
+        {
+            "id": 61,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.365697,
+                    31.533134
+                ]
+            },
+            "properties": {
+                "id": 61,
+                "shop": "Fortress Stadium",
+                "brand": "Charcoal",
+                "address": "Shop #7, Vana Complex, Fortress Stadium, Lahore",
+                "brand_id": 12,
+                "latitude": 31.533134,
+                "longitude": 74.365697
+            }
+        },
+        {
+            "id": 62,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.378052,
+                    31.472935
+                ]
+            },
+            "properties": {
+                "id": 62,
+                "shop": "HKB, DHA",
+                "brand": "Charcoal",
+                "address": "HKB Plaza, Y Block Commercial Area. Phase 3, DHA, Lahore",
+                "brand_id": 12,
+                "latitude": 31.472935,
+                "longitude": 74.378052
+            }
+        },
+        {
+            "id": 63,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.342089,
+                    31.509559
+                ]
+            },
+            "properties": {
+                "id": 63,
+                "shop": "HKB, Liberty",
+                "brand": "Charcoal",
+                "address": "3rd Floor, HKB Liberty Main Liberty, Gulberg Lahore",
+                "brand_id": 12,
+                "latitude": 31.509559,
+                "longitude": 74.342089
+            }
+        },
+        {
+            "id": 64,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.280335,
+                    31.503387
+                ]
+            },
+            "properties": {
+                "id": 64,
+                "shop": "Karim Block",
+                "brand": "Charcoal",
+                "address": "Factory Outlet 178-A, Karim Block , Allama Iqbal Town, Lahore",
+                "brand_id": 12,
+                "latitude": 31.503387,
+                "longitude": 74.280335
+            }
+        },
+        {
+            "id": 65,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.378781,
+                    31.529571
+                ]
+            },
+            "properties": {
+                "id": 65,
+                "shop": "Mall of Lahore",
+                "brand": "Charcoal",
+                "address": "22-B Upper Ground Floor The Mall Of Lahore",
+                "brand_id": 12,
+                "latitude": 31.529571,
+                "longitude": 74.378781
+            }
+        },
+        {
+            "id": 66,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.273363,
+                    31.444749
+                ]
+            },
+            "properties": {
+                "id": 66,
+                "shop": "Wapda Town",
+                "brand": "Charcoal",
+                "address": "177-B PIA Society, Wapda Town, Lahore",
+                "brand_id": 12,
+                "latitude": 31.444749,
+                "longitude": 74.273363
+            }
+        },
+        {
+            "id": 67,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.354124,
+                    31.507665
+                ]
+            },
+            "properties": {
+                "id": 67,
+                "shop": "Xinhua Mall",
+                "brand": "Charcoal",
+                "address": "Shop# GF-4, Xinhua Mall, Lahore",
+                "brand_id": 12,
+                "latitude": 31.507665,
+                "longitude": 74.354124
+            }
+        },
+        {
+            "id": 68,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.341288,
+                    31.509589
+                ]
+            },
+            "properties": {
+                "id": 68,
+                "shop": "Al Fateh LHR",
+                "brand": "Charcoal",
+                "address": "4th Floor, Al-Fateh Mall. 51-B, Mian Mehmood Ali Kasoori Road, Lahore",
+                "brand_id": 12,
+                "latitude": 31.509589,
+                "longitude": 74.341288
+            }
+        },
+        {
+            "id": 132,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.131921,
+                    33.547978
+                ]
+            },
+            "properties": {
+                "id": 132,
+                "shop": "Bahria Town",
+                "brand": "Charcoal",
+                "address": "Shop # 12-A, Bahria Heights III EXT. Phase 4 Bahria Town, Rawalpindi",
+                "brand_id": 12,
+                "latitude": 33.547978,
+                "longitude": 73.131921
+            }
+        },
+        {
+            "id": 133,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.049977,
+                    33.597998
+                ]
+            },
+            "properties": {
+                "id": 133,
+                "shop": "Ghakar Plaza",
+                "brand": "Charcoal",
+                "address": "Shop # 5, Lower Ground Floor, Ghakar Plaza, Bank Road Saddar Bazar, Rawalpindi",
+                "brand_id": 12,
+                "latitude": 33.597998,
+                "longitude": 73.049977
+            }
+        },
+        {
+            "id": 134,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.051369,
+                    33.596647
+                ]
+            },
+            "properties": {
+                "id": 134,
+                "shop": "Saddar Bazar",
+                "brand": "Charcoal",
+                "address": "60-C/1 Bank Road, Saddar Bazar Rawalpindi",
+                "brand_id": 12,
+                "latitude": 33.596647,
+                "longitude": 73.051369
+            }
+        },
+        {
+            "id": 135,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.658135,
+                    29.399364
+                ]
+            },
+            "properties": {
+                "id": 135,
+                "shop": "Railway Road",
+                "brand": "Charcoal",
+                "address": "Al-Noor Plaza,Welcome Chowk Railway Road, Bahawaplur",
+                "brand_id": 12,
+                "latitude": 29.399364,
+                "longitude": 71.658135
+            }
+        },
+        {
+            "id": 136,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.104355,
+                    31.411936
+                ]
+            },
+            "properties": {
+                "id": 136,
+                "shop": "Chenone",
+                "brand": "Charcoal",
+                "address": "Peoples Colony, Chenone Road, Fisalabad",
+                "brand_id": 12,
+                "latitude": 31.411936,
+                "longitude": 73.104355
+            }
+        },
+        {
+            "id": 137,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.108401,
+                    31.404913
+                ]
+            },
+            "properties": {
+                "id": 137,
+                "shop": "Galaxy Plus",
+                "brand": "Charcoal",
+                "address": "Galaxy Mall, D Ground Faisalabad",
+                "brand_id": 12,
+                "latitude": 31.404913,
+                "longitude": 73.108401
+            }
+        },
+        {
+            "id": 138,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.189269,
+                    32.102356
+                ]
+            },
+            "properties": {
+                "id": 138,
+                "shop": "King Mall",
+                "brand": "Charcoal",
+                "address": "Shop#13, 1st Floor, Kings Mall. Opposite Wapda Town, Gujranwala",
+                "brand_id": 12,
+                "latitude": 32.102356,
+                "longitude": 74.189269
+            }
+        },
+        {
+            "id": 139,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.202434,
+                    32.162346
+                ]
+            },
+            "properties": {
+                "id": 139,
+                "shop": "Satellite Town",
+                "brand": "Charcoal",
+                "address": "408- C/ Satellite Town, Gunjranwala",
+                "brand_id": 12,
+                "latitude": 32.162346,
+                "longitude": 74.202434
+            }
+        },
+        {
+            "id": 140,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.166685,
+                    32.237663
+                ]
+            },
+            "properties": {
+                "id": 140,
+                "shop": "Meer Studio",
+                "brand": "Charcoal",
+                "address": "Meer Shoping Center 1 Km Rahwali Road Gujranwala Cantt",
+                "brand_id": 12,
+                "latitude": 32.237663,
+                "longitude": 74.166685
+            }
+        },
+        {
+            "id": 141,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.080658,
+                    32.592109
+                ]
+            },
+            "properties": {
+                "id": 141,
+                "shop": "Gujrat",
+                "brand": "Charcoal",
+                "address": "Shop # 71,72, Ground Floor, Aleena Center Bhimber Road Gujrat",
+                "brand_id": 12,
+                "latitude": 32.592109,
+                "longitude": 74.080658
+            }
+        },
+        {
+            "id": 142,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.158645,
+                    33.520977
+                ]
+            },
+            "properties": {
+                "id": 142,
+                "shop": "World Trade Center",
+                "brand": "Charcoal",
+                "address": "Shop # 38 Ground Floor, GIGA MALL, World Trade Center, DHA II, Islamabad",
+                "brand_id": 12,
+                "latitude": 33.520977,
+                "longitude": 73.158645
+            }
+        },
+        {
+            "id": 143,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.013816,
+                    33.695266
+                ]
+            },
+            "properties": {
+                "id": 143,
+                "shop": "F-10 Markaz",
+                "brand": "Charcoal",
+                "address": "Shop # 7 Salma Plaza Sumbal Road F-10 Markaz Islamabad",
+                "brand_id": 12,
+                "latitude": 33.695266,
+                "longitude": 73.013816
+            }
+        },
+        {
+            "id": 144,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.049641,
+                    33.707393
+                ]
+            },
+            "properties": {
+                "id": 144,
+                "shop": "Centaurus",
+                "brand": "Charcoal",
+                "address": "Shop # 216, 2nd Floor. The Centaurus Mall Jinnah Ave,Islamabad",
+                "brand_id": 12,
+                "latitude": 33.707393,
+                "longitude": 73.049641
+            }
+        },
+        {
+            "id": 145,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.055735,
+                    33.720457
+                ]
+            },
+            "properties": {
+                "id": 145,
+                "shop": "Safa Gold Mall",
+                "brand": "Charcoal",
+                "address": "Shop # 29, 1st Floor, Al-Safa Gold Mall, F-7 Markaz Islamabad",
+                "brand_id": 12,
+                "latitude": 33.720457,
+                "longitude": 73.055735
+            }
+        },
+        {
+            "id": 146,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.4518,
+                    30.193729
+                ]
+            },
+            "properties": {
+                "id": 146,
+                "shop": "Chenone Tower",
+                "brand": "Charcoal",
+                "address": "Shop # 9, 1st Floor Chenone Tower. Multan",
+                "brand_id": 12,
+                "latitude": 30.193729,
+                "longitude": 71.4518
+            }
+        },
+        {
+            "id": 147,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    70.315197,
+                    28.427025
+                ]
+            },
+            "properties": {
+                "id": 147,
+                "shop": "Rahim Yar Khan",
+                "brand": "Charcoal",
+                "address": "Shop# 14/15 Businessman Colony, Rahim Yar Khan",
+                "brand_id": 12,
+                "latitude": 28.427025,
+                "longitude": 70.315197
+            }
+        },
+        {
+            "id": 148,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.541606,
+                    32.524306
+                ]
+            },
+            "properties": {
+                "id": 148,
+                "shop": "8 Div Sialkot",
+                "brand": "Charcoal",
+                "address": "8-Div Walfare Shopping Complex, Mehmood Ghaznavi Road,Cantt Sialkot",
+                "brand_id": 12,
+                "latitude": 32.524306,
+                "longitude": 74.541606
+            }
+        },
+        {
+            "id": 149,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.574829,
+                    32.513177
+                ]
+            },
+            "properties": {
+                "id": 149,
+                "shop": "V-Mall",
+                "brand": "Charcoal",
+                "address": "Shop # 1-2 V-Mall, 15-Div, Sialkot Cantt",
+                "brand_id": 12,
+                "latitude": 32.513177,
+                "longitude": 74.574829
+            }
+        },
+        {
+            "id": 150,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.554034,
+                    32.50736
+                ]
+            },
+            "properties": {
+                "id": 150,
+                "shop": "Sialkot Cantonment Plaza",
+                "brand": "Charcoal",
+                "address": "Shop #21, Sialkot Cantonment Plaza, Sialkot Cantt",
+                "brand_id": 12,
+                "latitude": 32.50736,
+                "longitude": 74.554034
+            }
+        },
+        {
+            "id": 151,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.095196,
+                    30.657186
+                ]
+            },
+            "properties": {
+                "id": 151,
+                "shop": "Ahmed Murad Road",
+                "brand": "Charcoal",
+                "address": "Shop# 92,93,94 First Floor, Azaan Heights Ahmed Murad Road, Sahiwal",
+                "brand_id": 12,
+                "latitude": 30.657186,
+                "longitude": 73.095196
+            }
+        }
+    ]
+}
+
+
+//===========================================================    Uniworth   ================================================
+
+
+
+var uniworthFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 152,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.088884,
+                    33.522317
+                ]
+            },
+            "properties": {
+                "id": 152,
+                "shop": "Bahria Town Ph. 7",
+                "brand": "Uniworth",
+                "address": "Mall# 229 Hotel View Square Bahria Spring Bahria Town Ph 7, Rawalpindi",
+                "brand_id": 13,
+                "latitude": 33.522317,
+                "longitude": 73.088884
+            }
+        },
+        {
+            "id": 153,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.070486,
+                    33.637758
+                ]
+            },
+            "properties": {
+                "id": 153,
+                "shop": "Commerial Market",
+                "brand": "Uniworth",
+                "address": "42 B, Commercial Market Rawalpindi",
+                "brand_id": 13,
+                "latitude": 33.637758,
+                "longitude": 73.070486
+            }
+        },
+        {
+            "id": 154,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.054298,
+                    33.594625
+                ]
+            },
+            "properties": {
+                "id": 154,
+                "shop": "Saddar",
+                "brand": "Uniworth",
+                "address": "60-C / III-Bank Road Saddar, Rawalpindi",
+                "brand_id": 13,
+                "latitude": 33.594625,
+                "longitude": 73.054298
+            }
+        },
+        {
+            "id": 155,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.14136,
+                    33.569399
+                ]
+            },
+            "properties": {
+                "id": 155,
+                "shop": "Pwd",
+                "brand": "Uniworth",
+                "address": "1-3 Al Ghani Arcade Main PWD, Rawalpindi",
+                "brand_id": 13,
+                "latitude": 33.569399,
+                "longitude": 73.14136
+            }
+        },
+        {
+            "id": 156,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.058153,
+                    33.721772
+                ]
+            },
+            "properties": {
+                "id": 156,
+                "shop": "Jinnah Super Market",
+                "brand": "Uniworth",
+                "address": "Shop 5 & 5A Block# 12 B Jinnah Super Market F7, Islamabad",
+                "brand_id": 13,
+                "latitude": 33.721772,
+                "longitude": 73.058153
+            }
+        },
+        {
+            "id": 157,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.077494,
+                    33.730065
+                ]
+            },
+            "properties": {
+                "id": 157,
+                "shop": "Super Market",
+                "brand": "Uniworth",
+                "address": "Shop No 4, Block B, F6 Super Market Islamabad",
+                "brand_id": 13,
+                "latitude": 33.730065,
+                "longitude": 73.077494
+            }
+        },
+        {
+            "id": 158,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.013757,
+                    33.694431
+                ]
+            },
+            "properties": {
+                "id": 158,
+                "shop": "F 10 Markaz",
+                "brand": "Uniworth",
+                "address": "Plot no 1 S , Sajid plaza,F 10 markaz near kfc islamabad",
+                "brand_id": 13,
+                "latitude": 33.694431,
+                "longitude": 73.013757
+            }
+        },
+        {
+            "id": 159,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.065998,
+                    24.88038
+                ]
+            },
+            "properties": {
+                "id": 159,
+                "shop": "Bahaddarabad",
+                "brand": "Uniworth",
+                "address": "Shop # 7,8, Asif Arcade, Bahaddarabad, Karachi",
+                "brand_id": 13,
+                "latitude": 24.88038,
+                "longitude": 67.065998
+            }
+        },
+        {
+            "id": 160,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    67.058636,
+                    24.870111
+                ]
+            },
+            "properties": {
+                "id": 160,
+                "shop": "Tariq Road",
+                "brand": "Uniworth",
+                "address": "Shop # 1, Plot # 138-G, P.E.C.H.S, Block 2, Main Tariq Road, Karachi",
+                "brand_id": 13,
+                "latitude": 24.870111,
+                "longitude": 67.058636
+            }
+        },
+        {
+            "id": 161,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.101553,
+                    31.409791
+                ]
+            },
+            "properties": {
+                "id": 161,
+                "shop": "Chen One Road",
+                "brand": "Uniworth",
+                "address": "P 1267/B peoples Colony No. 1, Chen One road, Faisalabad",
+                "brand_id": 13,
+                "latitude": 31.409791,
+                "longitude": 73.101553
+            }
+        },
+        {
+            "id": 162,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.038229,
+                    31.372724
+                ]
+            },
+            "properties": {
+                "id": 162,
+                "shop": "Boulevard Mall",
+                "brand": "Uniworth",
+                "address": "Shop #5,7 & 9, 1st floor, Boulevard Mall, Faisalabad",
+                "brand_id": 13,
+                "latitude": 31.372724,
+                "longitude": 73.038229
+            }
+        },
+        {
+            "id": 69,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.187151,
+                    31.376892
+                ]
+            },
+            "properties": {
+                "id": 69,
+                "shop": "Behria Town",
+                "brand": "Uniworth",
+                "address": "Shop # 1-4, First Floor, Jasmin Mall, Sector C, Commercial B, Behria Town, Lahore",
+                "brand_id": 13,
+                "latitude": 31.376892,
+                "longitude": 74.187151
+            }
+        },
+        {
+            "id": 70,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.298855,
+                    31.512516
+                ]
+            },
+            "properties": {
+                "id": 70,
+                "shop": "Main Boulevard",
+                "brand": "Uniworth",
+                "address": "23-Hunza Block, Main Boulevard, Allama Iqbal Town, Lahore",
+                "brand_id": 13,
+                "latitude": 31.512516,
+                "longitude": 74.298855
+            }
+        },
+        {
+            "id": 71,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.281504,
+                    31.476883
+                ]
+            },
+            "properties": {
+                "id": 71,
+                "shop": "Johar Town",
+                "brand": "Uniworth",
+                "address": "Shop#4b, Block-G, Johar Town, Lahore",
+                "brand_id": 13,
+                "latitude": 31.476883,
+                "longitude": 74.281504
+            }
+        },
+        {
+            "id": 72,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.378782,
+                    31.529589
+                ]
+            },
+            "properties": {
+                "id": 72,
+                "shop": "Mall of Lahore",
+                "brand": "Uniworth",
+                "address": "Shop# 24- A-2 Upper Ground Floor Mall Of Lahore",
+                "brand_id": 13,
+                "latitude": 31.529589,
+                "longitude": 74.378782
+            }
+        },
+        {
+            "id": 73,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.275842,
+                    31.44276
+                ]
+            },
+            "properties": {
+                "id": 73,
+                "shop": "Wapda Town",
+                "brand": "Uniworth",
+                "address": "Shop# 5/6, 20/F Block, PIA Society, Green Wood Plaza, Wapda Town, Lahore",
+                "brand_id": 13,
+                "latitude": 31.44276,
+                "longitude": 74.275842
+            }
+        },
+        {
+            "id": 74,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.377761,
+                    31.47346
+                ]
+            },
+            "properties": {
+                "id": 74,
+                "shop": "Y Block DHA",
+                "brand": "Uniworth",
+                "address": "G-F-17, Commercial Plaza, Y-Block DHA, Lahore",
+                "brand_id": 13,
+                "latitude": 31.47346,
+                "longitude": 74.377761
+            }
+        },
+        {
+            "id": 75,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.355857,
+                    31.470923
+                ]
+            },
+            "properties": {
+                "id": 75,
+                "shop": "Packages Mall",
+                "brand": "Uniworth",
+                "address": "Shop # G030, Ground floor, Packages mall, Lahore",
+                "brand_id": 13,
+                "latitude": 31.470923,
+                "longitude": 74.355857
+            }
+        },
+        {
+            "id": 76,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.322377,
+                    31.560444
+                ]
+            },
+            "properties": {
+                "id": 76,
+                "shop": "Mall Road",
+                "brand": "Uniworth",
+                "address": "Shoppe, 83-The Mall Road, Lahore",
+                "brand_id": 13,
+                "latitude": 31.560444,
+                "longitude": 74.322377
+            }
+        },
+        {
+            "id": 77,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.34689,
+                    31.508455
+                ]
+            },
+            "properties": {
+                "id": 77,
+                "shop": "Noor Jahan Road",
+                "brand": "Uniworth",
+                "address": "93-C/2 Noor Jahan Road Gulburg 3, Lahore",
+                "brand_id": 13,
+                "latitude": 31.508455,
+                "longitude": 74.34689
+            }
+        },
+        {
+            "id": 78,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.336009,
+                    31.506926
+                ]
+            },
+            "properties": {
+                "id": 78,
+                "shop": "Center Point",
+                "brand": "Uniworth",
+                "address": "Shop # UGF/01, Center Point Gulberg-III, Lahore",
+                "brand_id": 13,
+                "latitude": 31.506926,
+                "longitude": 74.336009
+            }
+        },
+        {
+            "id": 79,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.34201,
+                    31.509701
+                ]
+            },
+            "properties": {
+                "id": 79,
+                "shop": "Liberty Market",
+                "brand": "Uniworth",
+                "address": "40 Commercial Zone, Liberty Market Gulberg III Lahore",
+                "brand_id": 13,
+                "latitude": 31.509701,
+                "longitude": 74.34201
+            }
+        },
+        {
+            "id": 80,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.28064,
+                    31.50489
+                ]
+            },
+            "properties": {
+                "id": 80,
+                "shop": "Karim Block",
+                "brand": "Uniworth",
+                "address": "Really Plaza, Karim Block, Allama Iqbal Town, Lahore",
+                "brand_id": 13,
+                "latitude": 31.50489,
+                "longitude": 74.28064
+            }
+        },
+        {
+            "id": 81,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.342127,
+                    31.509514
+                ]
+            },
+            "properties": {
+                "id": 81,
+                "shop": "HKB Liberty",
+                "brand": "Uniworth",
+                "address": "HKB Liberty",
+                "brand_id": 13,
+                "latitude": 31.509514,
+                "longitude": 74.342127
+            }
+        },
+        {
+            "id": 82,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.329515,
+                    31.541904
+                ]
+            },
+            "properties": {
+                "id": 82,
+                "shop": "Shadman",
+                "brand": "Uniworth",
+                "address": "93, Shadman-I, Near Shadman CNG, Lahore",
+                "brand_id": 13,
+                "latitude": 31.541904,
+                "longitude": 74.329515
+            }
+        },
+        {
+            "id": 83,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.381112,
+                    31.580418
+                ]
+            },
+            "properties": {
+                "id": 83,
+                "shop": "Shalimar Link Road",
+                "brand": "Uniworth",
+                "address": "Shop# 1, 2 & 3, Shalimar Trade Center, Shalimar Link Road, Lahore",
+                "brand_id": 13,
+                "latitude": 31.580418,
+                "longitude": 74.381112
+            }
+        },
+        {
+            "id": 84,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.364133,
+                    31.532972
+                ]
+            },
+            "properties": {
+                "id": 84,
+                "shop": "Fortress Stadium",
+                "brand": "Uniworth",
+                "address": "Shop# 6, Vana Shams Arcade, Fortress Stadium, Lahore",
+                "brand_id": 13,
+                "latitude": 31.532972,
+                "longitude": 74.364133
+            }
+        },
+        {
+            "id": 85,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.363018,
+                    31.532576
+                ]
+            },
+            "properties": {
+                "id": 85,
+                "shop": "Fortress Square Mall",
+                "brand": "Uniworth",
+                "address": "Shop # 45,46,47 Fortress Mall, Fortress Stadium, Lahore",
+                "brand_id": 13,
+                "latitude": 31.532576,
+                "longitude": 74.363018
+            }
+        },
+        {
+            "id": 86,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.266154,
+                    31.466984
+                ]
+            },
+            "properties": {
+                "id": 86,
+                "shop": "Emporium Mall",
+                "brand": "Uniworth",
+                "address": "Shop # F63, First Floor, Emporium Mall, Lahore",
+                "brand_id": 13,
+                "latitude": 31.466984,
+                "longitude": 74.266154
+            }
+        },
+        {
+            "id": 87,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.315863,
+                    31.467006
+                ]
+            },
+            "properties": {
+                "id": 87,
+                "shop": "Amanah Mall Model Town",
+                "brand": "Uniworth",
+                "address": "Shop # 213, 2nd Floor Amanah Mall,Model Town Link Road, Lahore",
+                "brand_id": 13,
+                "latitude": 31.467006,
+                "longitude": 74.315863
+            }
+        },
+        {
+            "id": 88,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.317506,
+                    31.469434
+                ]
+            },
+            "properties": {
+                "id": 88,
+                "shop": "Model Town Link Road",
+                "brand": "Uniworth",
+                "address": "Shop # 5, Sipra Mall, Model Town Link Road, Lahore",
+                "brand_id": 13,
+                "latitude": 31.469434,
+                "longitude": 74.317506
+            }
+        },
+        {
+            "id": 89,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.337978,
+                    31.55309
+                ]
+            },
+            "properties": {
+                "id": 89,
+                "shop": "Pearl Continental Hotel",
+                "brand": "Uniworth",
+                "address": "Unit 11-12, Shopping Arcade, Pearl continental Hotel, Lahore",
+                "brand_id": 13,
+                "latitude": 31.55309,
+                "longitude": 74.337978
+            }
+        },
+        {
+            "id": 90,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.351773,
+                    31.518202
+                ]
+            },
+            "properties": {
+                "id": 90,
+                "shop": "MM Alam Road",
+                "brand": "Uniworth",
+                "address": "90 C 1, Naseer Avenue Adjacent Blue Mall MM Alam Road Gulburg 111 , Lahore",
+                "brand_id": 13,
+                "latitude": 31.518202,
+                "longitude": 74.351773
+            }
+        },
+        {
+            "id": 163,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.11747,
+                    31.410515
+                ]
+            },
+            "properties": {
+                "id": 163,
+                "shop": "Kohinor City",
+                "brand": "Uniworth",
+                "address": "Center Point 67, Uper Ground, Kohinor City, Jaranwala Road, Faisalabad",
+                "brand_id": 13,
+                "latitude": 31.410515,
+                "longitude": 73.11747
+            }
+        },
+        {
+            "id": 164,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.117594,
+                    31.410141
+                ]
+            },
+            "properties": {
+                "id": 164,
+                "shop": "RCG Shopping Mall",
+                "brand": "Uniworth",
+                "address": "RCG Shopping Mall, Jaranwala Road, Faisalabad",
+                "brand_id": 13,
+                "latitude": 31.410141,
+                "longitude": 73.117594
+            }
+        },
+        {
+            "id": 165,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.553589,
+                    32.507177
+                ]
+            },
+            "properties": {
+                "id": 165,
+                "shop": "Cantt Plaza Sialkot",
+                "brand": "Uniworth",
+                "address": "Shop No 1-2,Ilama Iqbal Road Cantt Plaza Sailkot Cantt",
+                "brand_id": 13,
+                "latitude": 32.507177,
+                "longitude": 74.553589
+            }
+        },
+        {
+            "id": 166,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.575075,
+                    32.514304
+                ]
+            },
+            "properties": {
+                "id": 166,
+                "shop": "V-Mall Sialkot",
+                "brand": "Uniworth",
+                "address": "V-Mall, Ghalib Road, Sialkot Cantt",
+                "brand_id": 13,
+                "latitude": 32.514304,
+                "longitude": 74.575075
+            }
+        },
+        {
+            "id": 167,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    70.315037,
+                    28.425267
+                ]
+            },
+            "properties": {
+                "id": 167,
+                "shop": "Club Road R.Y Khan",
+                "brand": "Uniworth",
+                "address": "Shop # 18/A, Club Road Near Apwa Ladies Club, Rahimyar Khan",
+                "brand_id": 13,
+                "latitude": 28.425267,
+                "longitude": 70.315037
+            }
+        },
+        {
+            "id": 168,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.472408,
+                    30.216486
+                ]
+            },
+            "properties": {
+                "id": 168,
+                "shop": "Goldast Colony",
+                "brand": "Uniworth",
+                "address": "Plot #30-A Guldasht Colony, Multan",
+                "brand_id": 13,
+                "latitude": 30.216486,
+                "longitude": 71.472408
+            }
+        },
+        {
+            "id": 169,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.436583,
+                    30.186647
+                ]
+            },
+            "properties": {
+                "id": 169,
+                "shop": "Multan Cantt",
+                "brand": "Uniworth",
+                "address": "Shop # 1,2,3 Ghaffar Plaza, Bhora Street, Multan Cantt",
+                "brand_id": 13,
+                "latitude": 30.186647,
+                "longitude": 71.436583
+            }
+        },
+        {
+            "id": 170,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    71.457722,
+                    30.203719
+                ]
+            },
+            "properties": {
+                "id": 170,
+                "shop": "Sharif Plaza",
+                "brand": "Uniworth",
+                "address": "Shop # 5, Sharif Plaza, Katchary Chowk, Multan",
+                "brand_id": 13,
+                "latitude": 30.203719,
+                "longitude": 71.457722
+            }
+        },
+        {
+            "id": 171,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.202449,
+                    32.164065
+                ]
+            },
+            "properties": {
+                "id": 171,
+                "shop": "Satellite Town",
+                "brand": "Uniworth",
+                "address": "Shop # G1 to 4, Taj Shopping Centre, Satellite Town Market, Gujranwala",
+                "brand_id": 13,
+                "latitude": 32.164065,
+                "longitude": 74.202449
+            }
+        },
+        {
+            "id": 172,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.919387,
+                    32.745065
+                ]
+            },
+            "properties": {
+                "id": 172,
+                "shop": "Aleena Shopping Mall",
+                "brand": "Uniworth",
+                "address": "Shop # 29-45, Aleena Shopping Mall, Bhimber Road, Gujrat",
+                "brand_id": 13,
+                "latitude": 32.745065,
+                "longitude": 73.919387
+            }
+        },
+        {
+            "id": 173,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.115702,
+                    30.672628
+                ]
+            },
+            "properties": {
+                "id": 173,
+                "shop": "Civil Lines Road",
+                "brand": "Uniworth",
+                "address": "Shop # 91-Old, Civil Lines, Girls College Road, Sahiwal",
+                "brand_id": 13,
+                "latitude": 30.672628,
+                "longitude": 73.115702
+            }
+        },
+        {
+            "id": 174,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.095179,
+                    30.657174
+                ]
+            },
+            "properties": {
+                "id": 174,
+                "shop": "Azan Heights",
+                "brand": "Uniworth",
+                "address": "Mezinine Floor, Azan Heights, Sahiwal",
+                "brand_id": 13,
+                "latitude": 30.657174,
+                "longitude": 73.095179
+            }
+        }
+    ]
+}
+
+
+//==========================================================    Bareeze Man   ================================================
+
+
+
+var bareezeManFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 1,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.377316,
+                    31.473739
+                ]
+            },
+            "properties": {
+                "id": 1,
+                "shop": "Y Block DHA",
+                "brand": "Bareeze Man",
+                "address": "DHA 108-Y-Block",
+                "brand_id": 1,
+                "latitude": 31.473739,
+                "longitude": 74.377316
+            }
+        },
+        {
+            "id": 25,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.351772,
+                    31.517059
+                ]
+            },
+            "properties": {
+                "id": 25,
+                "shop": "25 C MM Alam Road",
+                "brand": "Bareeze Man",
+                "address": "14-C MM Alam Road Shop #3 Ground Floor",
+                "brand_id": 1,
+                "latitude": 31.517059,
+                "longitude": 74.351772
+            }
+        }
+    ]
+}
+
+
+//==============================================================    Bareeze    ========================================================
+
+
+
+var bareezeFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 3,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.364586,
+                    31.501798
+                ]
+            },
+            "properties": {
+                "id": 3,
+                "shop": "Cavalary Ground",
+                "brand": "Bareeze",
+                "address": "28-Commercial Area, Cavalry Ground",
+                "brand_id": 3,
+                "latitude": 31.501798,
+                "longitude": 74.364586
+            }
+        },
+        {
+            "id": 5,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.351814,
+                    31.517017
+                ]
+            },
+            "properties": {
+                "id": 5,
+                "shop": "25-C MM Alam Road",
+                "brand": "Bareeze",
+                "address": "25-C MM Alam Road",
+                "brand_id": 3,
+                "latitude": 31.517017,
+                "longitude": 74.351814
+            }
+        }
+    ]
+}
+
+
+//=========================================================    Rang Ja   ==============================================================
+
+
+
+var rangJaFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 2,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265703,
+                    31.467195
+                ]
+            },
+            "properties": {
+                "id": 2,
+                "shop": "Emporium Mall",
+                "brand": "Rang Ja",
+                "address": "Ground Floor Shop # G 33, (Opposite Sapphire), Emporium Mall, Johar Town, Lahore",
+                "brand_id": 2,
+                "latitude": 31.467195,
+                "longitude": 74.265703
+            }
+        },
+        {
+            "id": 4,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.351224,
+                    31.51433
+                ]
+            },
+            "properties": {
+                "id": 4,
+                "shop": "MM Alam-Rang Ja",
+                "brand": "Rang Ja",
+                "address": "Shop # 23 C-1 M.M. Alalm Road (opposite KFC) Lahore",
+                "brand_id": 2,
+                "latitude": 31.51433,
+                "longitude": 74.351224
+            }
+        }
+    ]
+}
+
+
+
+//=========================================================    Chinyere    ========================================
+
+
+var chinyereFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 6,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.349978,
+                    31.520695
+                ]
+            },
+            "properties": {
+                "id": 6,
+                "shop": "Rahat Avenue",
+                "brand": "Chinyere",
+                "address": "9 L Rahat Avenue Gulberg Minnie Market, Lahore",
+                "brand_id": 4,
+                "latitude": 31.520695,
+                "longitude": 74.349978
+            }
+        }
+    ]
+}
+
+
+//====================================================    Minnie Minors    =============================================
+
+
+var minnieMinorsFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 7,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.351883,
+                    31.515409
+                ]
+            },
+            "properties": {
+                "id": 7,
+                "shop": "Pearl 1 Arcade MM Alam",
+                "brand": "Minnie Minors",
+                "address": "Pearl One, M. M. Alam Rd, Block B1 Gulberg III, Lahore",
+                "brand_id": 5,
+                "latitude": 31.515409,
+                "longitude": 74.351883
+            }
+        }
+    ]
+}
+
+
+
+//=================================================    edenrobe    =================================================
+
+
+var edenrobeFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 9,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.378443,
+                    31.52925
+                ]
+            },
+            "properties": {
+                "id": 9,
+                "shop": "Mall of Lahore",
+                "brand": "edenrobe",
+                "address": "Shop No: 19A 172 Tufail Road Park Lane Tower Lahore (Mall of Lhr)\n",
+                "brand_id": 6,
+                "latitude": 31.52925,
+                "longitude": 74.378443
+            }
+        },
+        {
+            "id": 11,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.355547,
+                    31.470785
+                ]
+            },
+            "properties": {
+                "id": 11,
+                "shop": "Packages Mall Mens",
+                "brand": "edenrobe",
+                "address": "Shop # 1060 First Floor, Packages Mall Walton Road Lahore",
+                "brand_id": 6,
+                "latitude": 31.470785,
+                "longitude": 74.355547
+            }
+        },
+        {
+            "id": 12,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265289,
+                    31.46679
+                ]
+            },
+            "properties": {
+                "id": 12,
+                "shop": "Furor Emporium Mall",
+                "brand": "edenrobe",
+                "address": "Furor G-42, Ground Floor, Emporium Mall Johar town, Lahore",
+                "brand_id": 6,
+                "latitude": 31.46679,
+                "longitude": 74.265289
+            }
+        },
+        {
+            "id": 13,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.315936,
+                    31.467095
+                ]
+            },
+            "properties": {
+                "id": 13,
+                "shop": "Amanah Mall",
+                "brand": "edenrobe",
+                "address": "Shop #101 Amanah mall model town link road Lahore",
+                "brand_id": 6,
+                "latitude": 31.467095,
+                "longitude": 74.315936
+            }
+        },
+        {
+            "id": 14,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.315936,
+                    31.467095
+                ]
+            },
+            "properties": {
+                "id": 14,
+                "shop": "Furor Amanah Mall",
+                "brand": "edenrobe",
+                "address": "Shop No.201, 2nd Floor, Model Town, Link Road, Lahore",
+                "brand_id": 6,
+                "latitude": 31.467095,
+                "longitude": 74.315936
+            }
+        },
+        {
+            "id": 15,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.363221,
+                    31.532507
+                ]
+            },
+            "properties": {
+                "id": 15,
+                "shop": "Fortress Square Mall",
+                "brand": "edenrobe",
+                "address": "Shop # FF-10 First Floor Fortress Square Mall, Lahore Cantt",
+                "brand_id": 6,
+                "latitude": 31.532507,
+                "longitude": 74.363221
+            }
+        },
+        {
+            "id": 16,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.36283,
+                    31.53388
+                ]
+            },
+            "properties": {
+                "id": 16,
+                "shop": "Fortress 10 A",
+                "brand": "edenrobe",
+                "address": "10 Arcade, Fortress Stadium, Cantt",
+                "brand_id": 6,
+                "latitude": 31.53388,
+                "longitude": 74.36283
+            }
+        },
+        {
+            "id": 17,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.381348,
+                    31.578133
+                ]
+            },
+            "properties": {
+                "id": 17,
+                "shop": "Shalimar Link Road LHR",
+                "brand": "edenrobe",
+                "address": "Shalimar Link Road, Opp. Total Petrol Pump, Near Cakes & Bakes",
+                "brand_id": 6,
+                "latitude": 31.578133,
+                "longitude": 74.381348
+            }
+        },
+        {
+            "id": 18,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.294572,
+                    31.516154
+                ]
+            },
+            "properties": {
+                "id": 18,
+                "shop": "Iqbal Town LHR",
+                "brand": "edenrobe",
+                "address": "Plot No.04, Gulshan Main Boulevard, Near Fazal Medicos, Iqbal Town",
+                "brand_id": 6,
+                "latitude": 31.516154,
+                "longitude": 74.294572
+            }
+        },
+        {
+            "id": 19,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.279959,
+                    31.476347
+                ]
+            },
+            "properties": {
+                "id": 19,
+                "shop": "Johar Town",
+                "brand": "edenrobe",
+                "address": "437 G1 Market Opp. Butt Sweets & Bakers, Johar Town",
+                "brand_id": 6,
+                "latitude": 31.476347,
+                "longitude": 74.279959
+            }
+        },
+        {
+            "id": 20,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.316739,
+                    31.467837
+                ]
+            },
+            "properties": {
+                "id": 20,
+                "shop": "Link Road Model Town",
+                "brand": "edenrobe",
+                "address": "Crystal Centre, Near Meezan Bank, Link Road Model Town",
+                "brand_id": 6,
+                "latitude": 31.467837,
+                "longitude": 74.316739
+            }
+        },
+        {
+            "id": 26,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.355547,
+                    31.470785
+                ]
+            },
+            "properties": {
+                "id": 26,
+                "shop": "Packages Mall",
+                "brand": "edenrobe",
+                "address": "Shop# 1035 First Floor, Packages Mall Walton Road Lahore",
+                "brand_id": 6,
+                "latitude": 31.470785,
+                "longitude": 74.355547
+            }
+        },
+        {
+            "id": 27,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265901,
+                    31.467707
+                ]
+            },
+            "properties": {
+                "id": 27,
+                "shop": "Emporium Mall",
+                "brand": "edenrobe",
+                "address": "Shop No F-1 First Floor Emporium Mall Johar Town",
+                "brand_id": 6,
+                "latitude": 31.467707,
+                "longitude": 74.265901
+            }
+        },
+        {
+            "id": 8,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.354091,
+                    31.507443
+                ]
+            },
+            "properties": {
+                "id": 8,
+                "shop": "Xinhua Furor",
+                "brand": "edenrobe",
+                "address": "Shop # SF-08, 2nd Floor, Xinhua Mall, Gulberg III Lahore",
+                "brand_id": 6,
+                "latitude": 31.507443,
+                "longitude": 74.354091
+            }
+        }
+    ]
+}
+
+
+
+//========================================    Kayseria    =====================================================
+
+
+var kayseriaFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 10,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.317985,
+                    31.469229
+                ]
+            },
+            "properties": {
+                "id": 10,
+                "shop": "Link Road",
+                "brand": "Kayseria",
+                "address": "Link Road Khasra No.1576-109, Main Link Road, Model Town, Pindi Rajputan Lahore",
+                "brand_id": 7,
+                "latitude": 31.469229,
+                "longitude": 74.317985
+            }
+        },
+        {
+            "id": 21,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.377759,
+                    31.473023
+                ]
+            },
+            "properties": {
+                "id": 21,
+                "shop": "Y Block DHA",
+                "brand": "Kayseria",
+                "address": "Shop No. 148 Y block Phase III Lahore",
+                "brand_id": 7,
+                "latitude": 31.473023,
+                "longitude": 74.377759
+            }
+        },
+        {
+            "id": 22,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265904,
+                    31.467275
+                ]
+            },
+            "properties": {
+                "id": 22,
+                "shop": "Emporium Mall",
+                "brand": "Kayseria",
+                "address": "Shop G-48, Emporium Mall ,Johar Town Lahore",
+                "brand_id": 7,
+                "latitude": 31.467275,
+                "longitude": 74.265904
+            }
+        }
+    ]
+}
+
+
+
+//=======================================================    The Entertainer    =======================================================
+
+
+var theEntertainerFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 23,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265904,
+                    31.467275
+                ]
+            },
+            "properties": {
+                "id": 23,
+                "shop": "Emporium Mall",
+                "brand": "The Entertainer",
+                "address": "Emporium Mall ,Johar Town Lahore",
+                "brand_id": 8,
+                "latitude": 31.467275,
+                "longitude": 74.265904
+            }
+        },
+        {
+            "id": 24,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.350463,
+                    31.508693
+                ]
+            },
+            "properties": {
+                "id": 24,
+                "shop": "MM Alam Road",
+                "brand": "The Entertainer",
+                "address": "96-28,MM Alam Road,Gulberg lll Lahore",
+                "brand_id": 8,
+                "latitude": 31.508693,
+                "longitude": 74.350463
+            }
+        }
+    ]
+}
+
+
+//========================================================    Monark    ==============================================
+
+
+var monarkFeature = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": 29,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.355365,
+                    31.470689
+                ]
+            },
+            "properties": {
+                "id": 29,
+                "shop": "Packages Mall",
+                "brand": "Monark",
+                "address": "Packages Mall, Second Floor, Walton Road, Lahore",
+                "brand_id": 10,
+                "latitude": 31.470689,
+                "longitude": 74.355365
+            }
+        },
+        {
+            "id": 39,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.295615,
+                    31.515212
+                ]
+            },
+            "properties": {
+                "id": 39,
+                "shop": "AIT",
+                "brand": "Monark",
+                "address": "Main Boulevard, Allama Iqbal Town, Lahore",
+                "brand_id": 10,
+                "latitude": 31.515212,
+                "longitude": 74.295615
+            }
+        },
+        {
+            "id": 40,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.363238,
+                    31.532502
+                ]
+            },
+            "properties": {
+                "id": 40,
+                "shop": "Fortress Square",
+                "brand": "Monark",
+                "address": "Fortress Square Mall, First Floor, Lahore Cantt",
+                "brand_id": 10,
+                "latitude": 31.532502,
+                "longitude": 74.363238
+            }
+        },
+        {
+            "id": 41,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.265549,
+                    31.466741
+                ]
+            },
+            "properties": {
+                "id": 41,
+                "shop": "Emporium Mall",
+                "brand": "Monark",
+                "address": "Emporium Mall, First Floor, Johar Town, Lahore",
+                "brand_id": 10,
+                "latitude": 31.466741,
+                "longitude": 74.265549
+            }
+        },
+        {
+            "id": 42,
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    74.350465,
+                    31.50864
+                ]
+            },
+            "properties": {
+                "id": 42,
+                "shop": "MM Alam",
+                "brand": "Monark",
+                "address": "Mall 96, M.M.Alam Road, Lahore",
+                "brand_id": 10,
+                "latitude": 31.50864,
+                "longitude": 74.350465
+            }
+        }
+    ]
+}
+
+//==========================  Declare an Empty Layer Controller  ==========================
+
+//var layerControl = L.control.layers().addTo(map);
+
+//=========================  Brand layers  ================================================
+
+var royalTagMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#36a83e',
+    fillColor: '#7ff67c',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var royalTagLayer = L.geoJSON(royalTagFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, royalTagMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+var cambridgeMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#b3ffff',
+    fillColor: '#c7fbfb',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var cambridgeLayer = L.geoJSON(cambridgeFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, cambridgeMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+var charcoalMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#99ff33',
+    fillColor: '#c3ff87',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var charcoalLayer = L.geoJSON(charcoalFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, charcoalMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+var uniworthMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#ffff99',
+    fillColor: '#ffffc6',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var uniworthLayer = L.geoJSON(uniworthFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, uniworthMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+var bareezeManMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#3695ff',
+    fillColor: '#6bb1ff',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var bareezeManLayer = L.geoJSON(bareezeManFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, bareezeManMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+var bareezeMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#90f2cc',
+    fillColor: '#9bf6d3',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var bareezeLayer = L.geoJSON(bareezeFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, bareezeMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+var rangJaMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#f5a939',
+    fillColor: '#fbc371',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var rangJaLayer = L.geoJSON(rangJaFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, rangJaMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+
+var chinyereMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#b9b9b9',
+    fillColor: '#d0cece',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var chinyereLayer = L.geoJSON(chinyereFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, chinyereMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+
+var minnieMinorsMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#c44dff',
+    fillColor: '#cf8af2',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var minnieMinorsLayer = L.geoJSON(minnieMinorsFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, minnieMinorsMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+
+var edenrobeMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#86592d',
+    fillColor: '#94693f',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var edenrobeLayer = L.geoJSON(edenrobeFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, edenrobeMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+
+var kayseriaMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#fff719',
+    fillColor: '#fff719',
+    fillOpacity: 0.5,
+    radius: 1000
+    };
+
+var kayseriaLayer = L.geoJSON(kayseriaFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, kayseriaMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+
+var theEntertainerMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#000000',
+    fillColor: '#413f40',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var theEntertainerLayer = L.geoJSON(theEntertainerFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, theEntertainerMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+
+var monarkMarkerOptions = {
+    //tags: [shop.brand],
+    color: '#f9459f',
+    fillColor: '#ff72b9',
+    fillOpacity: 0.5,
+    radius: 1000
+};
+
+var monarkLayer = L.geoJSON(monarkFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circle(latlng, monarkMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('<strong>' + 'Shop : ' + '</strong>' +  layer.feature.properties.shop + '<br>' + '<strong>' + 'Brand : ' + '</strong>' +  layer.feature.properties.brand + '<br>' + '<strong>' + 'Address : ' + '</strong>' +  layer.feature.properties.address +'</strong>', { closeButton: false });
+        //layer.bindPopup(feature.properties.brand);
+    }
+})
+
+
+//===========================  Adding Layer Control  =============================
+
+var baseMaps = {
+    "Streets": streets
+};
+
+var overlayMaps = {
+    "Royal Tag" : royalTagLayer,
+    "Cambridge" : cambridgeLayer,
+    "Charcoal" : charcoalLayer,
+    "Uniworth" : uniworthLayer,
+    "Bareeze Man" : bareezeManLayer,
+    "Bareeze" : bareezeLayer,
+    "Rang Ja" : rangJaLayer,
+    "Chinyere" : chinyereLayer,
+    "Minnie Minors" : minnieMinorsLayer,
+    "Edenrobe" : edenrobeLayer,
+    "Kayseria" : kayseriaLayer,
+    "The Entertainer" : theEntertainerLayer,
+    "Monark": monarkLayer
+};
+
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+/*
+//=========================== Adds Filter Button ==================================
+
+        var getBrandData = $.get('/brand');
+
+            getBrandData.done(function(brandname){
+
+                var brandName = brandname;
+                var shopBrand = [];
+
+                for(var x in brandName){
+
+                    var brandn = brandName[x];
+                    var brandname = brandn.brand;
+
+                        shopBrand.push(brandname);
+
+                    }
+
+                //===================== Add none option in the end =======================
+
+                shopBrand.push("none");
+
+                //===================== Filter Button for Outlets =========================
+
+       L.control.tagFilterButton({
+
+            data: shopBrand,
+            icon: '<img src="static/images/marker-icon-black.png" width="16" height="25">',
+            filterOnEveryClick: true
+        }).addTo( map );
+
+
+        });
+*/
+
+//=================== Legend to Discribe Outlet colors =============================
+
+        var legend = L.control({position: 'bottomleft'});
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML +=  '<img src="static/images/green-circle.png" width="20" height="20">'  + '     <b>Royal Tag Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/lightBlue-circle.png" width="20" height="20">'   +  '     <b>Cambridge</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/lightGreen-circle.png" width="20" height="20">'   +  '     <b>Charcoal</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/lightYellow-circle.png" width="20" height="20">'   +  '     <b>Uniworth</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/blue-circle.png" width="20" height="20">' + '     <b>Bareeze Man Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/seaGreen-circle.png" width="20" height="20">' + '     <b>Bareeze Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/orange-circle.png" width="20" height="20">' + '     <b>Rang Ja Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/grey-circle.png" width="20" height="20">' + '     <b>Chinyere Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/purple-circle.png" width="20" height="20">' + '     <b>Minnie Minors Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/brown-circle.png" width="20" height="20">' + '     <b>Edenrobe Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/yellow-circle.png" width="20" height="20">' + '     <b>Kayseria Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/black-circle.png" width="20" height="20">' + '     <b>The Entertainer Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/pink-circle.png" width="20" height="20">' + '     <b>Monark Outlets</b>' + '<br>'
+
+            return div;
+        };
+
+        legend.addTo(map);
+
+ </script>
+
+</body>
+</html>

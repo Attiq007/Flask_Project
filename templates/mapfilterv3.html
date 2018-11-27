@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Leaflet Mv3 </title>
+
+    <!--              ================ FavIcon ================              -->
+<link rel="shortcut icon" type="image/png" href="static/images/marker-icon-black.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--              ================ Custom Files ================              -->
+
+<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+
+<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<link  rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+
+<link rel="stylesheet" href="static/css/leaflet-tag-filter-button.css" />
+<link rel="stylesheet" href="static/css/easy-button.css" />
+
+<script src="static/js/easy-button.js"></script>
+<script src="static/js/leaflet-tag-filter-button.js"></script>
+
+</head>
+
+<body>
+
+<h1> Final Map with filter! and Multi color Outlets.</h1>
+
+<div id="map"></div>
+
+<script type="text/javascript">
+
+    $(function(argument) {
+
+        var map = L.map('map').setView([31.492263, 74.316796], 11);
+
+            // ========================  Adds OpenStreet Map in the map Div ==========================
+
+            L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: ['a','b','c']
+            }).addTo( map );
+
+            //==========================  Getting Data from Database ==================================
+
+
+
+            var getData = $.get('/data');
+
+            getData.done(function(shopmap){
+
+                var shopmap = shopmap;
+
+                for(var x in shopmap){
+
+                    var shop = shopmap[x];
+                    var point = [shop.latitude,shop.longitude];
+
+                    // ========================= Adding Markers with custom implementation =============
+
+                    if(shop.brand == 'Royal Tag'){
+
+
+                        var greenIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-green.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: greenIcon}).addTo(map);
+
+                        }else if((shop.brand == 'Cambridge') || (shop.brand == 'Charcoal') || (shop.brand == 'Uniworth')){
+
+
+                        var redIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-red.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: redIcon}).addTo(map);
+
+                    }else if(shop.brand == 'Bareeze Man'){
+
+
+                        var blueIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-blue.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: blueIcon}).addTo(map);
+
+                    }else if(shop.brand == 'Bareeze'){
+
+
+                        var seaGreenIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-seaGreen.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: seaGreenIcon}).addTo(map);
+
+                    }else if(shop.brand == 'Rang Ja'){
+
+
+                        var orangeIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-orange.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: orangeIcon}).addTo(map);
+
+                    }else if(shop.brand == 'Chinyere'){
+
+
+                        var greyIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-grey.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: greyIcon}).addTo(map);
+
+                    }else if(shop.brand == 'Minnie Minors'){
+
+
+                        var violetIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-violet.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: violetIcon}).addTo(map);
+
+                    }else if(shop.brand == 'edenrobe'){
+
+
+                        var brownIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-brown.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: brownIcon }).addTo(map);
+
+                    }else if(shop.brand == 'Kayseria'){
+
+
+                        var yellowIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-yellow.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: yellowIcon}).addTo(map);
+
+                    }else if(shop.brand == 'The Entertainer'){
+
+
+                        var blackIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-black.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: blackIcon}).addTo(map);
+
+                    }else if(shop.brand == 'Monark'){
+
+
+                        var pinkIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-pink.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: pinkIcon}).addTo(map);
+
+                    }
+                    else{
+
+                        var purpleIcon = new L.Icon({
+                          iconUrl: 'static/images/marker-icon-purple.png',
+                          shadowUrl: 'static/images/marker-shadow.png',
+                          iconSize: [25, 41],
+                          iconAnchor: [12, 41],
+                          popupAnchor: [1, -34],
+                          shadowSize: [41, 41]
+                        });
+
+                        var marker = L.marker(point, {tags: [shop.brand], icon: purpleIcon}).addTo(map);
+
+                    }
+
+
+                //============================ Adding popUps to Markers =================
+
+                var shopName = shop.shop;
+                var brand = shop.brand;
+                var address = shop.address;
+
+                var contentString = "Shop Name : " + shopName + "<br/>" + "Brand : " + brand + "<br/>" + "Address : " + address + "<br/>"
+
+                marker.bindPopup(contentString);
+            }
+
+        });
+
+        //=========================== Adds Filter Button ==================================
+
+       L.control.tagFilterButton({
+            data: ['Bareeze', "Bareeze Man", 'Chinyere', 'edenrobe', 'Kayseria', "Minnie Minors", 'Monark', "Rang Ja", "The Entertainer", "Royal Tag", 'Cambridge', 'Charcoal', 'Uniworth', 'none'],
+            icon: '<img src="static/images/marker-icon-black.png" width="16" height="25">',
+            filterOnEveryClick: true
+        }).addTo( map );
+
+        //=================== Legend to Discribe Outlet colors =============================
+
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML +=  '<img src="static/images/marker-icon-green.png" width="16" height="25">'  + '     <b>Royal Tag Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-red.png" width="16" height="25">'   +  '     <b>Royal Tag Competitors Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-blue.png" width="16" height="25">' + '     <b>Bareeze Man Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-seaGreen.png" width="16" height="25">' + '     <b>Bareeze Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-orange.png" width="16" height="25">' + '     <b>Rang Ja Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-grey.png" width="16" height="25">' + '     <b>Chinyere Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-violet.png" width="16" height="25">' + '     <b>Minnie Minors Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-brown.png" width="16" height="25">' + '     <b>Edenrobe Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-yellow.png" width="16" height="25">' + '     <b>Kayseria Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-black.png" width="16" height="25">' + '     <b>The Entertainer Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/marker-icon-pink.png" width="16" height="25">' + '     <b>Monark Outlets</b>' + '<br>'
+
+            return div;
+        };
+
+        legend.addTo(map);
+
+    });
+
+</script>
+
+</body>
+
+</html>

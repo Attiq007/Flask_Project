@@ -1,0 +1,57 @@
+<!--<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Browser</title>
+    <script src='https://unpkg.com/@turf/turf'></script>
+  </head>
+  <body>
+  <h1>Working So far</h1>
+  <script>
+    console.log(turf.greatCircle([0, 0], [100, 10]));
+    console.log(turf.point([100, 0]));
+    console.log(turf.bbox(turf.point([100, 0])));
+  </script>
+  </body>
+</html>-->
+
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Turf E2</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/plugins/turf/v1.3.0/turf.min.js'></script>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+  <div id='map'></div>
+  <script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY5YzJzczA2ejIzM29hNGQ3emFsMXgifQ.az9JUrQP7klCgD3W-ueILQ';
+
+    var map = L.mapbox.map('map', 'mapbox.light')
+      .setView([31.492263, 74.316796], 11);
+    map.scrollWheelZoom.disable();
+
+
+
+//    var center = [-75.343, 39.984];
+  //  var radius = 5;
+    //var options = {steps: 10, units: 'kilometers', properties: {foo: 'bar'}};
+    //var circle = turf.circle(center, radius, options);
+
+  </script>
+</body>
+</html>

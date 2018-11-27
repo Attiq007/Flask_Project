@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Check</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+
+<select name="dropdown">
+      <option value="" selected disabled hidden>--Select an option--</option>
+      <option value="bareeze">Bareeze Man/Bareeze</option>
+      <option value="rangJa">Rang Ja</option>
+      <option value="chinyere">Chinyere</option>
+      <option value="minnieMinors">Minnie Minors</option>
+      <option value="edenrobe">Edenrobe</option>
+      <option value="kayseria">Kayseria</option>
+      <option value="entertainer">The Entertainer</option>
+      <option value="royalTag">Royal Tag</option>
+      <option value="monark">Monark</option>
+      <option value="royalTagCompetitors">Royal Tag Competitors</option>
+    </select><br><br>
+
+<script>
+
+	$('select[name="dropdown"]').change(function(){
+
+    if ($(this).val() == "bareeze")
+        alert("Bareeze selected");
+
+    if ($(this).val() == "rangJa")
+        alert("Rang Ja selected");
+
+
+    if ($(this).val() == "chinyere")
+        alert("Chinyere selected");
+
+
+    if ($(this).val() == "minnieMinors")
+        alert("Minnie Minors selected");
+
+
+    if ($(this).val() == "edenrobe")
+        alert("Edenrobe selected");
+
+    if ($(this).val() == "kayseria")
+        alert("Kayseria selected");
+
+    if ($(this).val() == "entertainer")
+        alert("The Entertainer selected");
+
+    if ($(this).val() == "royalTag")
+        alert("Royal Tag selected");
+
+    if ($(this).val() == "monark")
+        alert("Monark selected");
+
+    if ($(this).val() == "royalTagCompetitors")
+        alert("Royal Tag Competitors selected");
+
+});
+
+</script>
+
+
+
+</body>
+</html>

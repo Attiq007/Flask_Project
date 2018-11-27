@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Data</title>
+</head>
+<body>
+
+    <h1> Never Used Yet </h1>
+
+    <form method="post" action="/post_shop">
+        <label>Shop: </label>
+        <input id="shop" name="shop" type="text"/>
+        <label>Brand: </label>
+        <input id="brand" name="brand" type="text"/>
+        <label>Address: </label>
+        <input id="address" name="address" type="text"/>
+        <label>Latitude: </label>
+        <input id="lat" name="lat" type="number"/>
+        <label>Longitude: </label>
+        <input id="long" name="long" type="number"/>
+        <input type="submit" />
+    </form>
+
+    {% for shop in myShop %}
+
+        <li>{{ shop.shop }} - {{shop.brand}} - {{ shop.address }} - {{ shop.latitude }} - {{ shop.longitude }}</li>
+
+    {% endfor %}
+
+</body>
+</html>

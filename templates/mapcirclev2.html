@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Leaflet CircleMapV2 </title>
+
+    <!--              ================ FavIcon ================              -->
+<link rel="shortcut icon" type="image/png" href="static/images/blue-circle.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--              ================ Custom Files ================              -->
+
+<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+
+<link rel="stylesheet" href="static/css/leaflet-tag-filter-button.css" />
+<link rel="stylesheet" href="static/css/easy-button.css" />
+<link rel="stylesheet" href="static/css/leaflet_locationlist.css" />
+
+<script src="static/js/leaflet_locationlist.js"></script>
+<script src="static/js/easy-button.js"></script>
+<script src="static/js/leaflet-tag-filter-button.js"></script>
+
+</head>
+
+<body>
+
+<h1> Map filter! Including Circle Only. </h1>
+
+<div id="map"></div>
+
+<script type="text/javascript">
+
+    $(function(argument) {
+
+        var map = L.map('map').setView([31.248771, 70.636107], 5);
+
+            // ========================  Adds OpenStreet Map in the map Div ==========================
+
+            L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: ['a','b','c']
+            }).addTo( map );
+
+            //==========================  Getting Data from Database ==================================
+
+
+            var getData = $.get('/datav2');
+
+            getData.done(function(shopmap){
+
+                var shopmap = shopmap;
+
+                for(var x in shopmap){
+
+                    var shop = shopmap[x];
+                    var point = [shop.latitude,shop.longitude];
+
+                    // ========================= Adding Markers with custom implementation =============
+
+                    if(shop.brand == 'Royal Tag'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#36a83e',
+                                                fillColor: '#7ff67c',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                        }else if(shop.brand == 'Cambridge'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#b3ffff',
+                                                fillColor: '#c7fbfb',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Charcoal'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#99ff33',
+                                                fillColor: '#c3ff87',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Uniworth'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#ffff99',
+                                                fillColor: '#ffffc6',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Bareeze Man'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#3695ff',
+                                                fillColor: '#6bb1ff',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Bareeze'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#90f2cc',
+                                                fillColor: '#9bf6d3',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Rang Ja'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#f5a939',
+                                                fillColor: '#fbc371',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Chinyere'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#b9b9b9',
+                                                fillColor: '#d0cece',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Minnie Minors'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#c44dff',
+                                                fillColor: '#cf8af2',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'edenrobe'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#86592d',
+                                                fillColor: '#94693f',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Kayseria'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#fff719',
+                                                fillColor: '#fff719',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'The Entertainer'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#000000',
+                                                fillColor: '#413f40',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }else if(shop.brand == 'Monark'){
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#f9459f',
+                                                fillColor: '#ff72b9',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }
+                    else{
+
+                        var circle = L.circle( point, {
+                                                tags: [shop.brand],
+                                                color: '#c611e7',
+                                                fillColor: '#d76fea',
+                                                fillOpacity: 0.5,
+                                                radius: 1000
+                                            }).addTo(map);
+
+                    }
+
+
+                //============================ Adding popUps to Markers =================
+
+                var shopName = shop.shop;
+                var brand = shop.brand;
+                var address = shop.address;
+
+                var contentString = "Shop Name : " + shopName + "<br/>" + "Brand : " + brand + "<br/>" + "Address : " + address + "<br/>"
+
+                circle.bindPopup(contentString);
+            }
+
+        });
+
+        //=========================== Adds Filter Button ==================================
+
+        var getBrandData = $.get('/brand');
+
+            getBrandData.done(function(brandname){
+
+                var brandName = brandname;
+                var shopBrand = [];
+
+                for(var x in brandName){
+
+                    var brandn = brandName[x];
+                    var brandname = brandn.brand;
+
+                        shopBrand.push(brandname);
+
+                    }
+
+                //===================== Add none option in the end =======================
+
+                shopBrand.push("none");
+
+                //===================== Filter Button for Outlets =========================
+
+       L.control.tagFilterButton({
+
+            data: shopBrand,
+            icon: '<img src="static/images/marker-icon-black.png" width="16" height="25">',
+            filterOnEveryClick: true
+        }).addTo( map );
+
+
+        });
+
+        //=====================================  Zoom Filter  ==============================
+
+
+        var llist = new L.control.locationlist({locationsList: [ { title: "Pakistan", latlng: [31.248771, 70.636107], zoom: 5 }, { title: "Lahore", latlng: [31.492263, 74.316796], zoom: 11 }, {title: 'Faisalabad' , latlng: [31.428686, 73.095489], zoom: 12 },   {title: 'Islamabad' , latlng: [33.644086, 73.088464], zoom: 11 },  {title: 'Gujranwala' , latlng: [32.186662, 74.180435], zoom: 11 },   {title: 'Rahim Yar Khan' , latlng: [28.422680, 70.307954], zoom: 13 },  {title: 'Karachi' , latlng: [24.902954, 67.077379], zoom: 11 },    {title: 'Sahiwal' , latlng: [30.665296, 73.096798], zoom: 13 },       {title: 'Multan' , latlng: [30.183485, 71.471913], zoom: 12 },       {title: 'Rawalpindi' , latlng: [33.584235, 73.030860], zoom: 11 },    {title: 'Hyderabad' , latlng: [25.393379, 68.368277], zoom: 12 },       {title: 'Sialkot' , latlng: [32.503512, 74.547924], zoom: 13 },     {title: 'Gujrat' , latlng: [32.582334, 74.077939], zoom: 13 }], showList:true});
+
+			map.addControl(llist);
+
+            llist.on('next', function() { });
+			llist.on('prev', function() { });
+
+
+        //=================== Legend to Discribe Outlet colors =============================
+
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML +=  '<img src="static/images/green-circle.png" width="20" height="20">'  + '     <b>Royal Tag Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/lightBlue-circle.png" width="20" height="20">'   +  '     <b>Cambridge</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/lightGreen-circle.png" width="20" height="20">'   +  '     <b>Charcoal</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/lightYellow-circle.png" width="20" height="20">'   +  '     <b>Uniworth</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/blue-circle.png" width="20" height="20">' + '     <b>Bareeze Man Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/seaGreen-circle.png" width="20" height="20">' + '     <b>Bareeze Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/orange-circle.png" width="20" height="20">' + '     <b>Rang Ja Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/grey-circle.png" width="20" height="20">' + '     <b>Chinyere Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/purple-circle.png" width="20" height="20">' + '     <b>Minnie Minors Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/brown-circle.png" width="20" height="20">' + '     <b>Edenrobe Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/yellow-circle.png" width="20" height="20">' + '     <b>Kayseria Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/black-circle.png" width="20" height="20">' + '     <b>The Entertainer Outlets</b>' + '<br>'
+            div.innerHTML +=  '<img src="static/images/pink-circle.png" width="20" height="20">' + '     <b>Monark Outlets</b>' + '<br>'
+
+            return div;
+        };
+
+        legend.addTo(map);
+
+    });
+
+</script>
+
+</body>
+
+</html>

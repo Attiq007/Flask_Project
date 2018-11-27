@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base</title>
+</head>
+
+<body>
+
+    <h1><b>PostgreSQL Data of Table Shop</b></h1><br />
+
+    {% for shop in myshop %}
+    <div><p>{{ shop.shop }} - {{ shop.brand }} - {{ shop.address }} - {{ shop.latitude }} - {{ shop.longitude }}</b></p></div>
+    {% endfor %}
+
+
+</body>
+
+</html>
