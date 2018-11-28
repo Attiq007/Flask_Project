@@ -29,7 +29,7 @@
 
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
 
-    <!-- ============================  Circle v4 Custom files  ==========================
+    <!-- ============================  Circle v4 Custom files  ==========================  -->
 
     <link rel="stylesheet" href="static/css/leaflet-tag-filter-button.css" />
     <link rel="stylesheet" href="static/css/easy-button.css" />
@@ -41,7 +41,7 @@
     <script src="static/js/leaflet-tag-filter-button.js"></script>
     <script src="static/js/L.CircleEditor.js"></script>
 
--->
+
 
 
 
@@ -4003,41 +4003,17 @@ var overlayMaps = {
 L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 
-/*
-//=========================== Adds Filter Button ==================================
-
-        var getBrandData = $.get('/brand');
-
-            getBrandData.done(function(brandname){
-
-                var brandName = brandname;
-                var shopBrand = [];
-
-                for(var x in brandName){
-
-                    var brandn = brandName[x];
-                    var brandname = brandn.brand;
-
-                        shopBrand.push(brandname);
-
-                    }
-
-                //===================== Add none option in the end =======================
-
-                shopBrand.push("none");
-
-                //===================== Filter Button for Outlets =========================
-
-       L.control.tagFilterButton({
-
-            data: shopBrand,
-            icon: '<img src="static/images/marker-icon-black.png" width="16" height="25">',
-            filterOnEveryClick: true
-        }).addTo( map );
+//=====================================  Zoom Filter  ==============================
 
 
-        });
-*/
+        var llist = new L.control.locationlist({locationsList: [ { title: "Pakistan", latlng: [31.248771, 70.636107], zoom: 5 }, { title: "Lahore", latlng: [31.492263, 74.316796], zoom: 11 }, {title: 'Faisalabad' , latlng: [31.428686, 73.095489], zoom: 12 },   {title: 'Islamabad' , latlng: [33.644086, 73.088464], zoom: 11 },  {title: 'Gujranwala' , latlng: [32.186662, 74.180435], zoom: 11 },   {title: 'Rahim Yar Khan' , latlng: [28.422680, 70.307954], zoom: 13 },  {title: 'Karachi' , latlng: [24.902954, 67.077379], zoom: 11 },    {title: 'Sahiwal' , latlng: [30.665296, 73.096798], zoom: 13 },       {title: 'Multan' , latlng: [30.183485, 71.471913], zoom: 12 },       {title: 'Rawalpindi' , latlng: [33.584235, 73.030860], zoom: 11 },    {title: 'Hyderabad' , latlng: [25.393379, 68.368277], zoom: 12 },       {title: 'Sialkot' , latlng: [32.503512, 74.547924], zoom: 13 },     {title: 'Gujrat' , latlng: [32.582334, 74.077939], zoom: 13 }], showList:true});
+
+			map.addControl(llist);
+
+            llist.on('next', function() { });
+			llist.on('prev', function() { });
+
+
 
 //=================== Legend to Discribe Outlet colors =============================
 
